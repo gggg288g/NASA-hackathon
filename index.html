@@ -158,7 +158,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .sumrow button{background:none;border:1px solid var(--line);border-radius:8px;padding:5px 10px;color:var(--acc2);font-size:13px}
 .empty{color:var(--mut);padding:24px;border:1px dashed var(--line);border-radius:14px;text-align:center}
 textarea.copybox{width:100%;height:160px;margin-top:10px;background:var(--bg2);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:10px;font:13px var(--mono)}
-
+.pot{margin-top:16px;border:1px dashed #4a5fae;border-radius:14px;padding:12px 16px;background:#101a3a}
+.pot h5{margin:0 0 6px;font:600 13px var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
+.pot ul{margin:4px 0 8px;padding-left:20px;font-size:14px}
+.pot li{margin:4px 0}
+.pot li a{font-weight:600}
+.pot .note{margin:0;font-size:12.5px;color:var(--mut)}
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--mut);font-size:13px}
 footer p{margin:4px 0}
 @media (max-width:640px){.sl output{text-align:left}.cb-sum{display:none}.badge.ev{display:none}}
@@ -467,7 +472,7 @@ function condHTML(c){
   <button class="cond-btn" aria-expanded="false" aria-controls="b-${c.id}"><span class="cb-main"><span class="cb-name">${c.name}</span><span class="cb-sum">${c.sum}</span></span>
    <span class="pill lv-1" data-pill></span>${CHEV}</button>
   <div class="collapse"><div class="inner" inert id="b-${c.id}"><div class="body"><p class="about">${c.about}</p>${inner}<div class="res none" data-res aria-live="polite"></div>
-   <div class="srcs">Sources: ${c.src.map(k=>`<a href="${SRC[k][1]}" target="_blank" rel="noopener">${SRC[k][0]}</a>`).join("")}</div></div></div></div></article>`;
+   ${potHTML(c)}<div class="srcs">Sources: ${c.src.map(k=>`<a href="${SRC[k][1]}" target="_blank" rel="noopener">${SRC[k][0]}</a>`).join("")}</div></div></div></div></article>`;
 }
 function exHTML(c,e){
  if(e.t==="check")return `<div class="ex check wide"><label><input type="checkbox" data-ex="${e.id}">${e.l}</label></div>`;
@@ -576,7 +581,8 @@ function renderSummary(){
  p.innerHTML=`<div class="ptitle"><h2>Summary</h2></div><p class="pintro">Everything you have assessed, worst first.</p>
  <div class="sumhead"><div class="overall ${w>=0?"lv"+w:""}"><h3>${head[0]}</h3><p>${head[1]}</p></div>
  <div class="btns"><button class="btn" id="copyBtn">Copy report</button><button class="btn sec2" id="resetBtn">Reset all</button></div></div>
- <div id="copyOut"></div>`+
+  <div id="copyOut"></div>
+ <div class="pot"><h5>Potential solution (being researched by NASA)</h5><ul><li><a href="https://www.nasa.gov/reference/tempus-pro/" target="_blank" rel="noopener">Remote diagnosis device (Tempus Pro)</a>: tests a commercial telemedicine device for collecting health data and enabling remote diagnoses.</li></ul><p class="note">Still being tested and not a proven treatment.</p></div>`+
  (rows.length?rows.map(({c,r})=>`<div class="sumrow"><span class="pill lv${r.lv}">${LV[r.lv]}</span><div class="t">${c.name}<small>${TABS.find(t=>t.id===c.tab).label} · ${esc(r.notes.join("; "))}</small></div><button data-goto="${c.tab}" data-open="${c.id}">View</button></div>`).join(""):`<div class="empty">Nothing assessed yet.</div>`);
 }
 function reportText(){
@@ -604,7 +610,27 @@ function resetAll(){
  document.querySelectorAll("[data-gauge] b").forEach(b=>b.style.left="0%");
  ALL.forEach(refresh);renderSummary();
 }
-
+const POT={
+ sans:[
+  {n:"Thigh cuffs",d:"Tight cuffs on the thighs that may keep fluid in the legs and could help prevent space-related eye disorders.",u:"https://www.nasa.gov/reference/thigh-cuff/"},
+  {n:"Daily B vitamins (B-Complex study)",d:"Testing whether a daily B vitamin supplement can prevent or lessen brain and eye changes in space.",u:"https://www.nasa.gov/reference/b-complex/"}],
+ fluid:[
+  {n:"Thigh cuffs",d:"Tight cuffs on the thighs that may keep fluid in the legs.",u:"https://www.nasa.gov/reference/thigh-cuff/"}],
+ bone:[
+  {n:"Diet, exercise and medication",d:"NASA lists these as the countermeasures under study for bone changes.",u:"https://www.nasa.gov/reference/risk-of-spaceflight-induced-bone-changes/"},
+  {n:"Exercise without a treadmill (Zero T2)",d:"Examines exercise in space without a treadmill and its effects on health and performance.",u:"https://www.nasa.gov/reference/zero-t2/"},
+  {n:"Enhanced diet (Food Physiology study)",d:"Tests whether an enhanced diet helps astronauts adapt to spaceflight.",u:"https://www.nasa.gov/missions/station/enhanced-diet-may-help-astronauts-adapt-to-spaceflight/"}],
+ muscle:[
+  {n:"Exercise without a treadmill (Zero T2)",d:"Examines exercise in space without a treadmill and its effects on health and performance.",u:"https://www.nasa.gov/reference/zero-t2/"},
+  {n:"Finding the best exercise types",d:"Researchers are studying which exercise types best protect health and spacewalk ability.",u:"https://www.nasa.gov/reference/risk-of-reduced-cardiorespiratory-and-musculoskeletal-fitness/"}],
+ iso:[
+  {n:"Space gardening",d:"A survey of whether growing fresh vegetables eases isolation and confinement.",u:"https://www.nasa.gov/humans-in-space/can-space-gardening-help-astronauts-cope-with-isolation/"}]
+};
+TABS.forEach(t=>t.conds.forEach(c=>{c.pot=POT[c.id]}));
+function potHTML(c){
+ if(!c.pot)return "";
+ return `<div class="pot"><h5>Potential solutions (being researched by NASA)</h5><ul>${c.pot.map(x=>`<li><a href="${x.u}" target="_blank" rel="noopener">${x.n}</a>: ${x.d}</li>`).join("")}</ul><p class="note">These are still being tested and are not proven treatments.</p></div>`;
+}
 build();
 document.querySelectorAll("input[type=range]").forEach(i=>setSlider(i,+i.min,+i.max));
 </script>
