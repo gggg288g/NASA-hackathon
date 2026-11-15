@@ -146,8 +146,12 @@ python scripts/triage_reference.py      # prints the planted events the triage c
 
 ## Team
 
+Team SixersGoToSpace: **Danny, Elliot, Gokul and Jordan Ong.**
+
 - **Jordan Ong**: app, triage method, mission data, NASA OSDR processing, body map, emergency mode.
-- **Teammate**: Self-check content and checks (SANS, orthostatic, infection, sleep, isolation, bone and muscle), Amsler grid, PHQ-9, NASA research references.
+- **Danny**: early warnings, reaction-time check, Mission Control packet, offline saving, hydration data and kidney-stone warning.
+- **Elliot** and **Gokul**: slides, demo and submission.
+- Self-check content and checks (SANS, orthostatic, infection, sleep, isolation, bone and muscle), Amsler grid, PHQ-9 and NASA research references come from the team's Astro Health Check prototype.
 
 ## Use of AI (Super Intelligence) tools
 

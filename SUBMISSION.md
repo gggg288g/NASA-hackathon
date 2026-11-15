@@ -1,6 +1,6 @@
 # Crew Health Monitor: submission text
 
-NASA Space Apps Challenge 2026 · Health Monitoring Software · Team SixersGoToSpace
+NASA Space Apps Challenge 2026 · Create Health Monitoring Software for Astronauts on Space Missions · Team SixersGoToSpace (Danny, Elliot, Gokul, Jordan Ong)
 
 Paste each section into the matching field of the Space Apps project form. Edit freely.
 
@@ -16,7 +16,9 @@ On a Mars mission the flight surgeon can be up to 22 minutes away each way, so t
 
 ## Link to Project Demo
 
-[Paste the public link to the slide deck (7 slides max) or video (30 s max). Test it in a private browser window first.]
+https://docs.google.com/presentation/d/1_nYD5yH6k1AAIDXTyk5qbWrepeQT40bA/edit?usp=sharing
+
+(Before submitting: in Google Slides, Share → General access → "Anyone with the link" → Viewer, then open this link in a private window to check it loads without signing in.)
 
 ## Link to Final Project
 
