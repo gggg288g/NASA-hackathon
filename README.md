@@ -1,6 +1,6 @@
 # Crew Health Monitor
 
-Presentation Slide: https://docs.google.com/presentation/d/148J2KnbSt6RDEGhvJY9YOGo6Dzm8dgnD/edit?usp=drive_link&ouid=103334139758356554776&rtpof=true&sd=true
+Presentation Slide: https://docs.google.com/presentation/d/1_nYD5yH6k1AAIDXTyk5qbWrepeQT40bA/edit?usp=drive_link&ouid=103334139758356554776&rtpof=true&sd=true
 
 NASA Space Apps Challenge 2026 · Team SixersGoToSpace
 
