@@ -1,6 +1,6 @@
 // Optional AI talk-through and read-aloud.
-// ---- AI layer: Claude inside the Claude app; otherwise Gemini through our own server function (api/emergency-ai.js);
-//      neither available = rules only. The Gemini key stays on the server, never in this bundle. ----
+// ---- AI layer: Claude inside the Claude app; otherwise our own server function (api/emergency-ai.js), which tries
+//      Claude first and Gemini second; neither available = rules only. API keys stay on the server, never in this bundle. ----
 const AI = { sample: undefined, tts: undefined, dict: undefined };
 // Fallback read-aloud with the device's own voice (e.g. iPhone), when Claude's voice isn't offered here
 function deviceTTS() {
@@ -29,23 +29,28 @@ function deviceTTS() {
 // iOS only allows speech that starts from a tap: prime it on the Assess tap
 const unlockDeviceVoice = () => { try { if (AI.tts && AI.tts.device && !speechSynthesis.speaking) { const u = new SpeechSynthesisUtterance("."); u.volume = 0.01; u.rate = 2; speechSynthesis.speak(u); } } catch { } };
 const isTouch = matchMedia("(pointer: coarse)").matches;
-// Gemini via /api/emergency-ai: same shape as the Claude sampler (streams text through onText, resolves with { text, model })
-const GEMINI_URL = "/api/emergency-ai";
-async function geminiAvailable() {
-  try { const r = await fetch(GEMINI_URL, { cache: "no-store" }); if (!r.ok) return null; const j = await r.json(); return j && j.ok ? j : null; }
-  catch { return null; }   // e.g. plain `npm run dev`: no server function, so the helper stays hidden
+// Server AI via /api/emergency-ai: same shape as the Claude-app sampler (streams text through onText, resolves with { text, model })
+const AI_URL = "/api/emergency-ai";
+const AI_TIMEOUT_MS = 45_000;   // never leave the Emergency screen waiting longer than this: fall back to the rule-based check
+async function serverAIAvailable() {
+  try { const r = await fetch(AI_URL, { cache: "no-store" }); if (!r.ok) return null; const j = await r.json(); return j && j.ok ? j : null; }
+  catch { return null; }   // no server function or no key: the helper stays hidden
 }
-async function geminiSample(msgs, { onText, mode = "chat" } = {}) {
-  const r = await fetch(GEMINI_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: msgs, mode }) });
-  if (!r.ok || !r.body) throw { code: r.status === 429 ? "rate_limited" : r.status === 503 ? "not_granted" : "error" };
-  const reader = r.body.getReader(), dec = new TextDecoder(); let text = "";
-  for (;;) { const { done, value } = await reader.read(); if (done) break; text += dec.decode(value, { stream: true }); if (onText) onText({ text }); }
-  if (!text.trim()) throw { code: "error" };
-  return { text, model: r.headers.get("x-model") || "Gemini" };
+async function serverSample(msgs, { onText, mode = "chat" } = {}) {
+  const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), AI_TIMEOUT_MS);
+  try {
+    const r = await fetch(AI_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: msgs, mode }), signal: ctl.signal });
+    if (!r.ok || !r.body) throw { code: r.status === 429 ? "rate_limited" : r.status === 503 ? "not_granted" : "error" };
+    const reader = r.body.getReader(), dec = new TextDecoder(); let text = "";
+    for (;;) { const { done, value } = await reader.read(); if (done) break; text += dec.decode(value, { stream: true }); if (onText) onText({ text }); }
+    if (!text.trim()) throw { code: "error" };
+    return { text, model: r.headers.get("x-model") || "AI" };
+  } catch (e) { throw ctl.signal.aborted ? { code: "timeout" } : e; }
+  finally { clearTimeout(timer); }
 }
 (async () => { try {
   if (window.claude) [AI.sample, AI.tts, AI.dict] = await Promise.all(["sample", "tts", "dictation"].map(n => claude.use(n).catch(() => null)));
-  else if (await geminiAvailable()) AI.sample = geminiSample;
+  else if (await serverAIAvailable()) AI.sample = serverSample;
   if ((window.claude || AI.sample) && !AI.tts) AI.tts = deviceTTS();
   if (AI.tts) AI.tts.onState(({ state }) => setSpeaking(state === "speaking"));
 } catch { } })();
@@ -122,6 +127,7 @@ async function assessAI() {
   } catch (e) {
     em.ai = { status: "error" }; renderEmg();
     if (e && e.code === "rate_limited") setStatus("AI busy. Try again in a moment.", true);
+    else if (e && e.code === "timeout") setStatus("AI took too long. Showing the rule-based check.", true);
   } finally { em.busy = false; }
 }
 const svgI = d => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
@@ -195,4 +201,4 @@ function wireAI() {
 }
 
 // Shared with other modules (see README: "How modules share code").
-Object.assign(window, { CASE_IDS, ASSESS_ASK, parseAssessment, assessAI, AI, deviceTTS, geminiAvailable, geminiSample, unlockDeviceVoice, isTouch, aiContext, svgI, ICON, chatHTML, renderChat, plain, DEFAULT_FOOT, setStatus, setSpeaking, say, ask, startAI, stopVoice, wireAI });
+Object.assign(window, { CASE_IDS, ASSESS_ASK, parseAssessment, assessAI, AI, deviceTTS, serverAIAvailable, serverSample, AI_TIMEOUT_MS, unlockDeviceVoice, isTouch, aiContext, svgI, ICON, chatHTML, renderChat, plain, DEFAULT_FOOT, setStatus, setSpeaking, say, ask, startAI, stopVoice, wireAI });

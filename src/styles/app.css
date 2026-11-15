@@ -302,8 +302,6 @@ body:not([data-mode="astro"]):not([data-mode="sc"]) .me-field { display: none; }
 /* astronaut body map (Medical officer) */
 #body .stage { position: relative; display: grid; place-items: center; }
 #body svg#astro { width: 100%; max-width: 250px; height: auto; display: block; touch-action: manipulation; }
-#body .suitup { position: absolute; top: 0; right: 0; z-index: 2; background: var(--fill); border: 0; border-radius: 999px; padding: 5px 11px; font-size: 13px; font-weight: 500; color: var(--accent); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s; }
-#body .suitup.show { opacity: 1; pointer-events: auto; }
 #body .hint { text-align: center; color: var(--muted); font-size: 12px; margin: 0; }
 #astro .part { cursor: pointer; transform-box: fill-box; transition: transform .55s cubic-bezier(.34,1.36,.64,1), opacity .35s var(--ease); }
 #astro .part:hover .shell { filter: brightness(1.03); }

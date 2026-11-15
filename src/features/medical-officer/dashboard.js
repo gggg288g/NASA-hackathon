@@ -46,7 +46,6 @@ function renderBody() {
   const open = st.suited ? null : areaOf(st.sys);
   svg.classList.remove("open-head", "open-chest", "open-limbs");
   if (open) svg.classList.add("open-" + open);
-  $("#suitup").classList.toggle("show", !!open);
   $("#astro-hint").textContent = "Tap a part";
   $("#wholebody").innerHTML = ["immune", "thermoregulation"].map(s => {
     const t = tierOf(s);
@@ -68,10 +67,11 @@ function renderBody() {
     st.suited = true; render();
   });
   svg.addEventListener("keydown", ev => {
+    // Escape puts the suit back on (mouse/touch users tap empty space around the astronaut instead)
+    if (ev.key === "Escape" && !st.suited) { ev.preventDefault(); st.suited = true; render(); return; }
     if (ev.key !== "Enter" && ev.key !== " ") return;
     const part = ev.target.closest(".part"); if (part) { ev.preventDefault(); ev.stopPropagation(); openArea(part.dataset.open); }
   });
-  $("#suitup").onclick = () => { st.suited = true; render(); };
 })();
 function renderDetail() {
   const s = SYS[st.sys], ss = systemStatus(st.crew, st.sys, st.day);

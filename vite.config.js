@@ -29,9 +29,9 @@ function localApi() {
 
 // base './' so the built site also works from GitHub Pages or any subfolder
 export default defineConfig(({ mode }) => {
-  // load GEMINI_API_KEY etc. from .env into this server process only
+  // load ANTHROPIC_API_KEY / GEMINI_API_KEY etc. from .env into this server process only
   const env = loadEnv(mode, process.cwd(), '');
-  for (const k of ['GEMINI_API_KEY', 'GEMINI_MODEL', 'GEMINI_FALLBACK_MODELS', 'ALLOWED_ORIGINS']) if (env[k] && !process.env[k]) process.env[k] = env[k];
+  for (const k of ['ANTHROPIC_API_KEY', 'ANTHROPIC_MODEL', 'GEMINI_API_KEY', 'GEMINI_MODEL', 'GEMINI_FALLBACK_MODELS', 'ALLOWED_ORIGINS']) if (env[k] && !process.env[k]) process.env[k] = env[k];
   return {
     base: './',
     server: { port: 5173, open: true },
