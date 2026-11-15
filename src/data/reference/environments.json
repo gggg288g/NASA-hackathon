@@ -1,0 +1,58 @@
+{
+ "_about": "Mission environments. Drives the triage engine's escalation policy: the longer the comms delay, the more the app guides the crew to act on their own before ground replies.",
+ "environments": [
+  {
+   "id": "iss",
+   "name": "Low Earth orbit (space station)",
+   "gravity_g": 0.0,
+   "one_way_delay_s": [
+    0,
+    1
+   ],
+   "escalation_policy": "realtime",
+   "red_tier_guidance": "Contact flight surgeon now - near-real-time voice available.",
+   "medical_evac_possible": true
+  },
+  {
+   "id": "lunar",
+   "name": "Moon (orbit or surface)",
+   "gravity_g": 0.165,
+   "one_way_delay_s": [
+    1.3,
+    1.3
+   ],
+   "escalation_policy": "realtime_with_lag",
+   "red_tier_guidance": "Contact flight surgeon - ~2.6 s round trip; conversation works with turn-taking. Start first-aid steps while connecting.",
+   "medical_evac_possible": true
+  },
+  {
+   "id": "mars_transit",
+   "name": "Mars transit",
+   "gravity_g": 0.0,
+   "one_way_delay_s": [
+    180,
+    1340
+   ],
+   "escalation_policy": "autonomous_first",
+   "red_tier_guidance": "Follow on-board protocol immediately and involve the crew medical officer. Send a store-and-forward report to ground; reply may take 6-45 min round trip.",
+   "medical_evac_possible": false
+  },
+  {
+   "id": "mars_surface",
+   "name": "Mars surface base",
+   "gravity_g": 0.38,
+   "one_way_delay_s": [
+    180,
+    1340
+   ],
+   "escalation_policy": "autonomous_first",
+   "red_tier_guidance": "Same as transit. Note: near solar conjunction, contact can be lost for ~2-3 weeks.",
+   "medical_evac_possible": false
+  }
+ ],
+ "sources": [
+  "https://spaceacademy.net.au/spacelink/commdly.htm",
+  "https://newspaceeconomy.ca/2026/04/18/how-far-away-is-mars-distance-delay-and-what-it-means-for-getting-there/",
+  "https://spacenexus.us/blog/interplanetary-internet-nasa-communicates-mars"
+ ]
+}

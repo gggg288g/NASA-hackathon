@@ -1,0 +1,273 @@
+{
+ "_about": "Content for the clickable body map. Each system lists which indicators drive its colour, what spaceflight does to it, which NASA HRP hazards cause it, and countermeasures. System colour = worst tier among its indicators.",
+ "systems": [
+  {
+   "id": "cardiovascular",
+   "name": "Heart & blood vessels",
+   "body_region": [
+    "chest"
+   ],
+   "function": "Pumps blood carrying oxygen and nutrients around the body.",
+   "indicators": [
+    "resting_hr",
+    "bp_systolic",
+    "bp_diastolic"
+   ],
+   "hazards": [
+    "altered gravity",
+    "space radiation",
+    "hostile closed environment"
+   ],
+   "spaceflight_effects": [
+    "Fluids shift toward the head; blood volume drops and crews are chronically mildly dehydrated.",
+    "24 h blood pressure falls ~8-10 mmHg in flight as blood vessels relax.",
+    "On return to gravity, blood pools in the legs - dizziness or fainting risk (orthostatic intolerance)."
+   ],
+   "countermeasures": [
+    "Daily aerobic exercise (treadmill / cycle)",
+    "Hydration targets",
+    "Thigh cuffs to limit head-ward fluid shift (under study)"
+   ],
+   "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/4324706/",
+    "https://today.ucsd.edu/story/nasa_twin_study_provides_a_multi_omics_view_of_the_human_bodys_response_to_a_year_in_space",
+    "https://www.asc-csa.gc.ca/eng/sciences/cciss.asp",
+    "https://www.nasa.gov/?p=207552",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6789148"
+   ]
+  },
+  {
+   "id": "musculoskeletal",
+   "name": "Bones & muscles",
+   "body_region": [
+    "hips",
+    "spine",
+    "legs"
+   ],
+   "function": "Supports the body and lets you move. Bones also store calcium.",
+   "indicators": [
+    "exercise_min",
+    "body_mass"
+   ],
+   "derived_metrics": {
+    "est_bone_loss_pct": "Modelled: hip/spine areal BMD loss of 1-1.5% per month without adequate exercise. App estimates cumulative loss from days in flight x (1 - exercise compliance factor). Tiers: green <=6%, amber 6-10%, red >10% (6% ~ a typical 6-month ISS mission).",
+    "est_calf_muscle_loss_pct": "Modelled: ~13% calf volume loss over 6 months on ISS despite exercise. Tiers: green <=10%, amber 10-15%, red >15%."
+   },
+   "hazards": [
+    "altered gravity"
+   ],
+   "spaceflight_effects": [
+    "Bone mineral density drops ~1-1.5% per month at weight-bearing sites (hip, spine, legs).",
+    "Hip trabecular bone lost 2.2-2.7%/month in a CT study of 14 ISS crew.",
+    "Calf muscle volume fell ~13% over 6 months even with exercise; slow-twitch fibres lost >40% power.",
+    "Calcium leaving bone passes through the kidneys, raising the risk of kidney stones."
+   ],
+   "countermeasures": [
+    "High-intensity resistance exercise",
+    "Calcium + vitamin D intake",
+    "Adequate protein, eaten soon after exercise"
+   ],
+   "measurement_note": "Bone density cannot be measured daily in flight (needs DXA/CT scans), so the app shows a modelled estimate driven by exercise compliance and flags it for post-flight confirmation.",
+   "sources": [
+    "https://ntrs.nasa.gov/api/citations/20170004597/downloads/20170004597.pdf",
+    "https://pubmed.ncbi.nlm.nih.gov/15125798/",
+    "https://blogs.scientificamerican.com/news-blog/spaceflight-wreaks-havoc-on-astrona-2009-04-08/",
+    "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-030-bone-loss.pdf",
+    "https://ntrs.nasa.gov/citations/20150010417",
+    "https://ntrs.nasa.gov/api/citations/20080014283/downloads/20080014283.pdf"
+   ]
+  },
+  {
+   "id": "immune",
+   "name": "Immune system",
+   "body_region": [
+    "whole body",
+    "lymph nodes"
+   ],
+   "function": "Defends the body against infection.",
+   "indicators": [
+    "core_temp",
+    "stress"
+   ],
+   "symptom_checklist": [
+    "rash or blisters",
+    "sore throat",
+    "chills",
+    "fatigue",
+    "swollen glands"
+   ],
+   "hazards": [
+    "isolation and confinement",
+    "space radiation",
+    "hostile closed environment"
+   ],
+   "spaceflight_effects": [
+    "Stress hormones (cortisol, adrenaline) rise and suppress immune cells.",
+    "Dormant herpes viruses reactivate: 61% of ISS astronauts studied shed one or more herpes viruses; reactivation rises with mission length.",
+    "Only a small share develop symptoms, but this is a growing risk for Mars-length missions."
+   ],
+   "countermeasures": [
+    "Sleep protection",
+    "Stress management",
+    "Pre-flight vaccination",
+    "Early reporting of rashes/fever"
+   ],
+   "sources": [
+    "https://www.drugtopics.com/view/shingles-space",
+    "https://www.theweek.co.uk/100266/nasa-issues-warning-about-herpes-in-space",
+    "https://www.nasa.gov/hrp/hazards/"
+   ]
+  },
+  {
+   "id": "neuro_ocular",
+   "name": "Eyes & brain pressure (SANS)",
+   "body_region": [
+    "eyes",
+    "head"
+   ],
+   "function": "Vision; the optic nerve links the eye to the brain.",
+   "indicators": [
+    "vision_check"
+   ],
+   "hazards": [
+    "altered gravity"
+   ],
+   "spaceflight_effects": [
+    "Blood and cerebrospinal fluid shift toward the head.",
+    "Signs include optic disc swelling, globe flattening, choroidal folds and a far-sighted (hyperopic) shift.",
+    "At least one SANS feature found in 81% of NASA astronauts after long-duration flight; worse with longer and repeat missions."
+   ],
+   "countermeasures": [
+    "Weekly vision self-checks",
+    "Adjustable-prescription glasses",
+    "Ocular ultrasound / OCT when flagged",
+    "Fluid-shift countermeasures (thigh cuffs, under study)"
+   ],
+   "sources": [
+    "https://theophthalmologist.com/issues/2026/articles/august/standardizing-sans-in-spaceflight/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10359255",
+    "https://ntrs.nasa.gov/citations/20100039152",
+    "https://ntrs.nasa.gov/api/citations/20170009173/downloads/20170009173.pdf"
+   ]
+  },
+  {
+   "id": "behavioral",
+   "name": "Mind, mood & sleep",
+   "body_region": [
+    "head"
+   ],
+   "function": "Thinking, attention, emotions and rest.",
+   "indicators": [
+    "sleep_hours",
+    "mood",
+    "stress",
+    "phq9"
+   ],
+   "hazards": [
+    "isolation and confinement",
+    "distance from Earth"
+   ],
+   "spaceflight_effects": [
+    "ISS crews average ~6 h sleep despite 8.5 h scheduled; ~75% used sleep medication at some point.",
+    "Short sleep degrades vigilant attention and mood.",
+    "Isolation, confinement and long comms delays strain mood and crew relationships."
+   ],
+   "countermeasures": [
+    "Consistent sleep schedule and light management",
+    "Private family conferences",
+    "Recreation time",
+    "Behavioural health check-ins"
+   ],
+   "sources": [
+    "https://www.news-medical.net/news/20140810/Space-missions-affect-sleep-patterns-in-astronauts.aspx",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC8919197",
+    "https://ntrs.nasa.gov/citations/20250011721",
+    "https://www.nasa.gov/hrp/hazards/"
+   ]
+  },
+  {
+   "id": "metabolic",
+   "name": "Metabolism & nutrition",
+   "body_region": [
+    "abdomen"
+   ],
+   "function": "Turns food into energy and building blocks.",
+   "indicators": [
+    "glucose",
+    "body_mass"
+   ],
+   "hazards": [
+    "altered gravity",
+    "hostile closed environment"
+   ],
+   "spaceflight_effects": [
+    "Signals of insulin resistance seen in astronauts (gene/pathway changes).",
+    "Body mass often decreases; appetite can be poor.",
+    "A 1 C rise in body temperature needs ~20% more energy from food."
+   ],
+   "countermeasures": [
+    "Meet calorie and protein targets",
+    "Regular meal timing",
+    "Track fasting glucose trend"
+   ],
+   "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11166981",
+    "https://www.esa.int/es/articles/space-fever"
+   ]
+  },
+  {
+   "id": "thermoregulation",
+   "name": "Body temperature",
+   "body_region": [
+    "whole body"
+   ],
+   "function": "Keeps the body's core temperature in a narrow, safe range.",
+   "indicators": [
+    "core_temp"
+   ],
+   "hazards": [
+    "altered gravity",
+    "hostile closed environment"
+   ],
+   "spaceflight_effects": [
+    "No convection in weightlessness, so heat is shed less efficiently.",
+    "Resting core temperature climbs to ~38 C over ~2.5 months; can exceed 40 C during exercise."
+   ],
+   "countermeasures": [
+    "Fans/airflow during and after exercise",
+    "Hydration",
+    "Use personal baseline, not 37 C, as 'normal'"
+   ],
+   "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5701078",
+    "https://www.esa.int/es/articles/space-fever"
+   ]
+  },
+  {
+   "id": "respiratory",
+   "name": "Lungs & breathing",
+   "body_region": [
+    "chest"
+   ],
+   "function": "Brings oxygen in and removes carbon dioxide.",
+   "indicators": [
+    "spo2"
+   ],
+   "hazards": [
+    "hostile closed environment"
+   ],
+   "spaceflight_effects": [
+    "Cabin CO2 is far higher than on Earth (~0.23 mmHg outdoors). NASA limits the 1-hour average to 3 mmHg; crews report symptoms from about 2.3 mmHg and headaches between 2.8 and 4.5 mmHg."
+   ],
+   "countermeasures": [
+    "Monitor cabin CO2",
+    "Ventilation near sleep stations"
+   ],
+   "sources": [
+    "NASA HRP hostile closed environment hazard (see challenge Resources tab)",
+    "https://nasa.gov/wp-content/uploads/2023/03/co2-technical-brief-ochmo.pdf",
+    "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20150019624.pdf"
+   ]
+  }
+ ]
+}

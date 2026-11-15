@@ -1,0 +1,37 @@
+[
+  {
+    "crew_id": "CDR",
+    "start_day": 40,
+    "end_day": 56,
+    "type": "bp_drift",
+    "description": "Blood pressure climbs ~3 mmHg/day from in-flight baseline; headaches from day 46; vision self-check flags mild change on day 49. Recovers after day 56 (simulated treatment)."
+  },
+  {
+    "crew_id": "FE1",
+    "start_day": 28,
+    "end_day": 36,
+    "type": "sleep_mood_dip",
+    "description": "Insomnia (4-5 h sleep), low mood and high stress after a comms blackout / family news."
+  },
+  {
+    "crew_id": "FE1",
+    "start_day": 35,
+    "end_day": 40,
+    "type": "viral_reactivation",
+    "description": "Latent virus reactivation: temp ~+1.1 C above baseline, HR +15%, rash/fatigue symptoms. Follows the stress period (stress suppresses immunity)."
+  },
+  {
+    "crew_id": "FE2",
+    "start_day": 62,
+    "end_day": 62,
+    "type": "hypoglycemia",
+    "description": "Skipped meals + long exercise session -> fasting glucose ~52 mg/dL (ADA level 2)."
+  },
+  {
+    "crew_id": "FE2",
+    "start_day": 65,
+    "end_day": 80,
+    "type": "exercise_noncompliance",
+    "description": "Workload spike: exercise drops to ~35-50 min/day; modelled bone/muscle loss accelerates."
+  }
+]
