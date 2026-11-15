@@ -1,5 +1,7 @@
 # Crew Health Monitor
 
+Presentation Slide: https://docs.google.com/presentation/d/148J2KnbSt6RDEGhvJY9YOGo6Dzm8dgnD/edit?usp=drive_link&ouid=103334139758356554776&rtpof=true&sd=true
+
 NASA Space Apps Challenge 2026 · Team SixersGoToSpace
 
 A health monitor for astronauts on long missions, where the flight surgeon may be minutes away (Moon) or up to 20+ minutes away (Mars). It compares each astronaut against **their own normal**, not just Earth ranges, so problems show up early. It also tells the crew what to do when help is far away.
