@@ -1,6 +1,8 @@
 // Astronaut view: Today screen, habits, body status.
 // ---------- ASTRONAUT MODE ----------
-const am = { me: "CDR", shareMood: false, done: {}, fluid: {} };   // fluid["CREW:day"] = [ml, ml, ...] drinks logged so far (in memory)
+const FLUID_KEY = "crew-health.fluid.v1";   // drinks logged today survive a reload (offline, on this device only)
+const am = { me: "CDR", shareMood: false, done: {}, fluid: (() => { try { return JSON.parse(localStorage.getItem(FLUID_KEY)) || {}; } catch { return {}; } })() };   // fluid["CREW:day"] = [ml, ml, ...] drinks logged so far
+const saveFluid = () => { try { localStorage.setItem(FLUID_KEY, JSON.stringify(am.fluid)); } catch { } };
 // Plain step-by-step instructions (demo wording; real crews follow their onboard medical checklists)
 const HOWTO = {
   sleep_hours: ["Check your wrist sensor's sleep summary, or estimate from lights-out to wake-up.", "Count only time actually asleep."],
@@ -75,9 +77,10 @@ function fluidGoal(crew) {
 function logFluid(crew, day, ml) {
   if (!(ml > 0 && ml <= 3000)) return;
   (am.fluid[fluidKey(crew, day)] ||= []).push(Math.round(ml));
+  saveFluid();
   renderAstro();
 }
-function undoFluid(crew, day) { const a = am.fluid[fluidKey(crew, day)]; if (a && a.length) { a.pop(); renderAstro(); } }
+function undoFluid(crew, day) { const a = am.fluid[fluidKey(crew, day)]; if (a && a.length) { a.pop(); saveFluid(); renderAstro(); } }
 function hydrationHTML(crew, d, isDone) {
   const ml = fluidToday(crew, d), goal = fluidGoal(crew), n = fluidLog(crew, d).length;
   const pct = Math.min(100, Math.round(ml / goal * 100));

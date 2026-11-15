@@ -51,7 +51,7 @@ EVENTS = [
      "Skipped meals + long exercise session -> fasting glucose ~52 mg/dL (ADA level 2)."),
     ("FE2", 65, 80, "exercise_noncompliance",
      "Workload spike: exercise drops to ~35-50 min/day; modelled bone/muscle loss accelerates."),
-         ("FE2", 66, 73, "low_hydration",
+    ("FE2", 66, 73, "low_hydration",
      "Same workload spike: skips drink breaks, fluid intake ~1.3-1.4 L/day for a week."),
 ]
 
@@ -104,7 +104,7 @@ def gen_crew(c, flight_days, rng, env, frng):
         mood = c["mood"] + mood_shift + rng.normal(0, 0.45)
         stress = c["stress"] + (0.3 if flight else 0) + rng.normal(0, 0.45)
         exercise = c["exercise"] + rng.normal(0, 10) if flight else c["exercise"] * 0.9 + rng.normal(0, 10)
-                fluid = c["fluid"] * (0.95 if flight else 1.0) + frng.normal(0, 180)
+        fluid = c["fluid"] * (0.95 if flight else 1.0) + frng.normal(0, 180)
         symptoms = []
         vision = 0
 
@@ -214,6 +214,7 @@ def main():
     rows = []
     for c in CREW:
         rows += gen_crew(c, args.days, rng, env, frng)
+    df = add_missing(pd.DataFrame(rows), rng)
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)

@@ -34,6 +34,7 @@ Single readings miss stories that span several indicators, so a second layer loo
 | Fatigue building up | 8+ h of sleep debt in a week (against 7 h a night) | FE1 day 30 |
 | Possible infection | temperature ≥ 0.5 °C over personal normal, plus heart rate +8% or immune symptoms | FE1 day 36, links to the fever protocol |
 | Bone & muscle loss speeding up | 4+ of 7 days under 60 min exercise | FE2 from day 68 |
+| Kidney stone risk | 3-day fluid average under 1,900 ml, plus low exercise or estimated bone loss ≥ 6% | FE2 from day 67 (low hydration, days 66–73) |
 | Shared cause? | 2+ crew with raised temperature or immune symptoms within 3 days | (cabin air, food, water or something going round the crew) |
 | Trend forecast | blood pressure or heart rate still Normal but on a steady 7-day line (R² ≥ 0.6) that reaches Watch within 7 days | strict on purpose, to avoid false alarms |
 

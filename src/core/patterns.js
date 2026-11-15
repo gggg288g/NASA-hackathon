@@ -72,6 +72,18 @@ const RULES = [
         why: "Exercise is the main defence against microgravity bone loss (about 1–1.5% a month) and calf muscle loss. Missed days add up and are slow to win back.",
         next: "Book the treadmill and resistance device in today's schedule. If pain, time or equipment is stopping you, tell the medical officer." };
     } },
+  { key: "kidney", sys: "metabolic", title: "Kidney stone risk: low fluids + bone loss",
+    test(crew, day) {
+      const w3 = win(crew, day, 3), fl = avg(nums(w3, "fluid_intake_ml"));
+      if (fl === null || nums(w3, "fluid_intake_ml").length < 3 || fl >= 1900) return null;
+      const w5 = win(crew, day, 5).filter(r => r.day >= 1), lowEx = w5.filter(r => isNum(r.exercise_min) && r.exercise_min < 60).length;
+      const r = ROWS[crew][idxOf(crew, day)], bone = r && isNum(r.est_bone_loss_pct) ? r.est_bone_loss_pct : 0;
+      if (lowEx < 3 && bone < 6) return null;
+      return { tier: fl < 1500 ? "red" : "amber",
+        evidence: [`fluids averaging ${Math.round(fl).toLocaleString()} ml/day over 3 days`, lowEx >= 3 ? `${lowEx} of the last 5 days under 60 min exercise` : `estimated bone loss ${bone.toFixed(1)}%`],
+        why: "In microgravity, calcium leaves the bones and passes through the kidneys. Little urine plus extra calcium is how kidney stones form, and NASA tracks this as a known spaceflight risk. One stone far from Earth could end a mission.",
+        next: "Drink a pouch now and one with every meal until you're back above 2,000 ml a day. Restart resistance exercise. Report any side or back pain straight away." };
+    } },
   { key: "fatigue", sys: "behavioral", title: "Fatigue building up",
     test(crew, day) {
       const w = win(crew, day, 7), sl = nums(w, "sleep_hours"); if (sl.length < 5) return null;
