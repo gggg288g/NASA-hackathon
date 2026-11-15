@@ -1,5 +1,6 @@
-// Optional AI talk-through and read-aloud. Only active where window.claude is available.
-// ---- AI layer (Claude via the page's sample capability; absent = rules only) ----
+// Optional AI talk-through and read-aloud.
+// ---- AI layer: Claude inside the Claude app; otherwise Gemini through our own server function (api/emergency-ai.js);
+//      neither available = rules only. The Gemini key stays on the server, never in this bundle. ----
 const AI = { sample: undefined, tts: undefined, dict: undefined };
 // Fallback read-aloud with the device's own voice (e.g. iPhone), when Claude's voice isn't offered here
 function deviceTTS() {
@@ -28,24 +29,100 @@ function deviceTTS() {
 // iOS only allows speech that starts from a tap: prime it on the Assess tap
 const unlockDeviceVoice = () => { try { if (AI.tts && AI.tts.device && !speechSynthesis.speaking) { const u = new SpeechSynthesisUtterance("."); u.volume = 0.01; u.rate = 2; speechSynthesis.speak(u); } } catch { } };
 const isTouch = matchMedia("(pointer: coarse)").matches;
-(async () => { try { if (window.claude) { [AI.sample, AI.tts, AI.dict] = await Promise.all(["sample", "tts", "dictation"].map(n => claude.use(n).catch(() => null)));
-  if (!AI.tts) AI.tts = deviceTTS();
-  if (AI.tts) AI.tts.onState(({ state }) => setSpeaking(state === "speaking")); } } catch { } })();
+// Gemini via /api/emergency-ai: same shape as the Claude sampler (streams text through onText, resolves with { text, model })
+const GEMINI_URL = "/api/emergency-ai";
+async function geminiAvailable() {
+  try { const r = await fetch(GEMINI_URL, { cache: "no-store" }); if (!r.ok) return null; const j = await r.json(); return j && j.ok ? j : null; }
+  catch { return null; }   // e.g. plain `npm run dev`: no server function, so the helper stays hidden
+}
+async function geminiSample(msgs, { onText, mode = "chat" } = {}) {
+  const r = await fetch(GEMINI_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: msgs, mode }) });
+  if (!r.ok || !r.body) throw { code: r.status === 429 ? "rate_limited" : r.status === 503 ? "not_granted" : "error" };
+  const reader = r.body.getReader(), dec = new TextDecoder(); let text = "";
+  for (;;) { const { done, value } = await reader.read(); if (done) break; text += dec.decode(value, { stream: true }); if (onText) onText({ text }); }
+  if (!text.trim()) throw { code: "error" };
+  return { text, model: r.headers.get("x-model") || "Gemini" };
+}
+(async () => { try {
+  if (window.claude) [AI.sample, AI.tts, AI.dict] = await Promise.all(["sample", "tts", "dictation"].map(n => claude.use(n).catch(() => null)));
+  else if (await geminiAvailable()) AI.sample = geminiSample;
+  if ((window.claude || AI.sample) && !AI.tts) AI.tts = deviceTTS();
+  if (AI.tts) AI.tts.onState(({ state }) => setSpeaking(state === "speaking"));
+} catch { } })();
+// Everything the AI knows about this case: the person's readings vs THEIR baseline, last 7 days, symptoms, description.
+const CASE_IDS = ["bp_systolic", "bp_diastolic", "resting_hr", "core_temp", "glucose", "spo2", "sleep_hours", "stress", "exercise_min", "vision_check"];
 function aiContext() {
-  const c = em.crew, d = em.day, rows = ROWS[c].filter(r => r.day <= d && r.day > d - 7);
+  const c = em.crew, d = em.day, env = ENV[st.env], rows = ROWS[c].filter(r => r.day <= d && r.day > d - 7);
+  const now = CASE_IDS.map(id => { const e = ev(c, d, id); return e ? `- ${line(e, id)} [status ${TIER_LABEL[e.tier || "none"]}]` : null; }).filter(Boolean).join("\n");
   const recent = rows.map(r => `D${r.day}: BP ${fmt(r.bp_systolic)}/${fmt(r.bp_diastolic)}, HR ${fmt(r.resting_hr)}, temp ${fmt(r.core_temp, "core_temp")}C, glucose ${fmt(r.glucose)}, SpO2 ${fmt(r.spo2)}, sleep ${fmt(r.sleep_hours)}h, exercise ${fmt(r.exercise_min)}min${r.symptoms ? ", symptoms " + r.symptoms : ""}`).join("\n");
-  const causes = em.causes.slice(0, 3).map(x => `- ${x.title} (${likely(x.score)[1]}): ${x.evid.join("; ")}${x.proto ? "\n  Steps: " + PROTOCOLS[x.proto].steps.map((s, i) => `${i + 1}. ${s.t}`).join(" ") : x.actions ? "\n  Steps: " + x.actions.join("; ") : ""}`).join("\n");
-  return `You are the calm emergency helper inside an astronaut health app. Someone may be scared. Rules:
-- Reply in 1 to 3 short, calm sentences. Plain words. One question or one instruction at a time.
-- Only use the data and steps below. Never invent a diagnosis, a drug, or a dose. For medication say "per the onboard medical checklist, with the medical officer".
-- If chest pain, trouble breathing, confusion, fainting or heavy bleeding comes up, tell them to get the crew medical officer now.
-- Say "possible", never "you have". You are a guide, not a doctor.
-- Environment: ${ENV[st.env].name}, ${fmtDelay(ENV[st.env])}. ${ENV[st.env].escalation_policy === "autonomous_first" ? "Ground cannot answer in time, so guide them through the on-board steps." : "They can reach the flight surgeon in near real time; encourage that in parallel."}
-Person: ${CREW_NAME[c]}. Symptoms now: ${em.sym.join(", ")}.
-Last 7 days of their data:
-${recent}
-Rule-based possible causes (already shown to them):
-${causes || "none matched"}`;
+  const rules = em.causes.slice(0, 4).map(x => `- ${x.title} (${likely(x.score)[1]}): ${x.evid.join("; ")}`).join("\n");
+  const label = k => (SYMPTOMS.find(s => s[0] === k) || [k, k])[1];
+  return `CASE
+Patient: ${CREW_NAME[c]}, mission day ${d}.
+Environment: ${env.name}, ${env.gravity_g ? env.gravity_g + " g" : "microgravity"}, ${fmtDelay(env)}. ${env.escalation_policy === "autonomous_first" ? "Ground cannot answer in time: the crew must act on board first." : "The flight surgeon can be reached in near real time: call them in parallel."}
+Symptoms tapped: ${em.sym.map(label).join(", ") || "none"}
+Described by the crew: ${em.desc.trim() || "(nothing typed)"}
+Latest readings vs this person's own baseline (status uses their baseline, not just Earth ranges):
+${now || "- no recent readings"}
+Last 7 days:
+${recent || "no rows"}
+Simple rule-based check (may be incomplete):
+${rules || "- nothing matched"}
+On-board step-by-step checklists: ${Object.entries(PROTOCOLS).map(([k, p]) => `${k} = ${p.title}`).join("; ")}
+
+RULES
+- You are helping the crewmate who is treating ${CREW_NAME[c]}. Write the steps for that helper, in plain words.
+- Base the cause on the data and symptoms above. Say "likely" or "possible", never certain. You are a guide, not a doctor.
+- First aid and positioning steps are fine. For any medicine, say "per the onboard medical checklist, with the medical officer": never give a drug name with a dose.
+- If there is chest pain, trouble breathing, confusion, fainting or heavy bleeding, step 1 is "Get the crew medical officer now".`;
+}
+const ASSESS_ASK = `Work out the most likely cause and tell the helper exactly what to do. Reply with JSON only (no markdown) in this shape:
+{"likely_cause": "short name", "urgency": "act_now" | "urgent" | "monitor", "confidence": "high" | "medium" | "low",
+ "why": ["up to 3 short reasons, citing their numbers vs baseline or the symptoms"],
+ "steps": ["4 to 7 short instructions for the helper, in order, most important first"],
+ "watch_for": ["up to 3 signs it is getting worse"],
+ "escalate": "one sentence on contacting the flight surgeon given the comms delay",
+ "other_possibilities": [{"cause": "short name", "why": "short reason"}],
+ "protocol": "${Object.keys(PROTOCOLS).join('" | "')}" | "none"}`;
+// Check the AI's answer has the right shape before showing any of it (strings only, length-capped).
+function parseAssessment(t) {
+  const a = String(t || ""), i = a.indexOf("{"), k = a.lastIndexOf("}"); if (i < 0 || k <= i) return null;
+  let j; try { j = JSON.parse(a.slice(i, k + 1)); } catch { return null; }
+  const str = (v, n = 220) => typeof v === "string" ? v.trim().slice(0, n) : "";
+  const list = (v, max) => (Array.isArray(v) ? v : []).map(x => str(x)).filter(Boolean).slice(0, max);
+  const out = {
+    likely_cause: str(j.likely_cause, 80), why: list(j.why, 3), steps: list(j.steps, 8), watch_for: list(j.watch_for, 3), escalate: str(j.escalate, 240),
+    urgency: ["act_now", "urgent", "monitor"].includes(j.urgency) ? j.urgency : "urgent",
+    confidence: ["high", "medium", "low"].includes(j.confidence) ? j.confidence : "low",
+    other_possibilities: (Array.isArray(j.other_possibilities) ? j.other_possibilities : []).map(o => ({ cause: str(o && o.cause, 80), why: str(o && o.why, 160) })).filter(o => o.cause).slice(0, 2),
+    protocol: PROTOCOLS[j.protocol] ? j.protocol : null,
+  };
+  return out.likely_cause && out.steps.length ? out : null;
+}
+async function assessAI() {
+  if (!AI.sample || em.busy) return;
+  em.busy = true; em.ai = { status: "loading" }; renderAssess();
+  const prompt = aiContext() + "\n\n" + ASSESS_ASK, crew = em.crew;
+  try {
+    // one quiet retry if the answer comes back cut off or malformed
+    let r, data = null;
+    for (let tries = 0; tries < 2 && !data; tries++) {
+      r = await AI.sample([{ role: "user", content: prompt }], { model: "claude-sonnet-5-5", modelTier: "default", cache: false, mode: "assess" });
+      if (em.crew !== crew || em.stage !== "res") return;   // the user moved on
+      data = parseAssessment(r.text);
+    }
+    if (!data) throw { code: "bad_output" };
+    em.ai = { status: "done", data };
+    em.model = r.modelApplied || r.model || "AI";
+    // keep the case and the answer (hidden) so follow-up questions have the full context
+    em.chat = [{ role: "user", content: prompt, shown: "" }, { role: "assistant", content: r.text, shown: "" }];
+    renderAssess();
+    const mEl = $("#ai-model"); if (mEl) mEl.textContent = em.model;
+    if (em.voice && AI.tts) AI.tts.speak(plain(`Most likely: ${data.likely_cause}. First: ${data.steps[0]}`)).catch(() => { });
+  } catch (e) {
+    em.ai = { status: "error" }; renderEmg();
+    if (e && e.code === "rate_limited") setStatus("AI busy. Try again in a moment.", true);
+  } finally { em.busy = false; }
 }
 const svgI = d => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 const ICON = {
@@ -86,7 +163,7 @@ async function ask(userText, shown) {
   const reply = { role: "assistant", content: "" }; em.chat.push(reply);
   renderChat();
   try {
-    const r = await AI.sample(msgs, { model: "claude-sonnet-5-5", modelTier: "default", cache: false, onText: ({ text }) => { reply.content = text; renderChat(); } });
+    const r = await AI.sample(msgs, { model: "claude-sonnet-5-5", modelTier: "default", cache: false, mode: "chat", onText: ({ text }) => { reply.content = text; renderChat(); } });
     reply.content = r.text; renderChat();
     em.model = r.modelApplied || r.model || "claude-sonnet-5-5 (requested)";
     const mEl = $("#ai-model"); if (mEl) mEl.textContent = em.model;
@@ -97,11 +174,11 @@ async function ask(userText, shown) {
     if (e && e.code === "not_granted") { AI.sample = null; wireAI(); }
   } finally { em.busy = false; }
 }
-function startAI() { if (AI.sample) ask(aiContext() + "\n\nStart: in 2 sentences, tell them calmly what to do first, then ask one question that would help most.", ""); }
+function startAI() { if (AI.sample) assessAI(); }
 function stopVoice() { try { AI.tts && AI.tts.stop(); } catch { } try { AI.dict && AI.dict.stop(); } catch { } }
 function wireAI() {
   const box = $("#emg-ai"); if (!box) return;
-  if (!AI.sample) { $("#askbar").hidden = true; $("#chat").innerHTML = ""; setStatus("The helper works inside the crew's Claude app. The steps above always work."); return; }
+  if (!AI.sample) { $("#askbar").hidden = true; $("#chat").innerHTML = ""; setStatus("AI helper isn't set up here. The steps above always work."); return; }
   const inp = $("#ai-in"), sendB = $("#ai-send");
   if (isTouch && !AI.dict) inp.placeholder = "Ask, or use the keyboard mic";
   const sync = () => { sendB.disabled = !inp.value.trim(); };
@@ -118,4 +195,4 @@ function wireAI() {
 }
 
 // Shared with other modules (see README: "How modules share code").
-Object.assign(window, { AI, deviceTTS, unlockDeviceVoice, isTouch, aiContext, svgI, ICON, chatHTML, renderChat, plain, DEFAULT_FOOT, setStatus, setSpeaking, say, ask, startAI, stopVoice, wireAI });
+Object.assign(window, { CASE_IDS, ASSESS_ASK, parseAssessment, assessAI, AI, deviceTTS, geminiAvailable, geminiSample, unlockDeviceVoice, isTouch, aiContext, svgI, ICON, chatHTML, renderChat, plain, DEFAULT_FOOT, setStatus, setSpeaking, say, ask, startAI, stopVoice, wireAI });

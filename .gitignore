@@ -4,3 +4,9 @@ dist/
 __pycache__/
 *.pyc
 *.log
+
+# secrets (the Gemini key lives in Vercel settings / a local .env, never in git)
+.env
+.env.*
+!.env.example
+.vercel/

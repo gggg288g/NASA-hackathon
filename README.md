@@ -46,7 +46,27 @@ npm run build      # static site in dist/
 npm run preview    # serve the build
 ```
 
-The AI talk-through in Emergency only runs inside the Claude app. On localhost the step-by-step protocols and read-aloud (device voice) still work.
+### Emergency AI helper (optional)
+
+The step-by-step protocols in Emergency always work. On top of them, an AI helper can talk the crew through it: Claude when the app runs inside the Claude app, otherwise **Gemini** through a small server function, [`api/emergency-ai.js`](api/emergency-ai.js). The Gemini key stays on the server and is never in the browser bundle or in git.
+
+Deploy on Vercel (it detects Vite and the `api/` folder automatically):
+
+1. Import the GitHub repo in Vercel.
+2. In **Project Settings → Environment Variables**, add `GEMINI_API_KEY` (from Google AI Studio). Optional: `GEMINI_MODEL` (default `gemini-3.8-flash`) and `ALLOWED_ORIGINS` for extra domains.
+3. Deploy. The helper appears in Emergency once the key is set.
+
+To use it locally:
+
+```bash
+cp .env.example .env     # Windows: copy .env.example .env
+# open .env and paste your key after GEMINI_API_KEY=
+npm run dev
+```
+
+The dev server runs the same function as Vercel, so the helper works straight away. Without a key, the helper stays hidden and the protocols still work. `.env` is git-ignored: never commit it or paste keys in chat.
+
+The function only answers pages from the same site, limits each visitor to 12 requests a minute (per server instance), caps message size and reply length, and adds fixed safety rules to every request. For a public launch, add a spending cap on the Google key as well.
 
 ## Project layout
 
@@ -57,10 +77,12 @@ src/
   core/                    shared logic: data, triage, state, flight-surgeon report
   app/                     tab switching and global events (loaded last)
   data/                    mission data, reference ranges, NASA OSDR files
+api/
+  emergency-ai.js          Vercel function: Emergency helper -> Gemini (holds the key)
   features/
     astronaut/             Today + daily check-in
     self-check/            Self-check tab and the link to the astronaut's data
-    medical-officer/       body map, dashboard, quick entry
+    medical-officer/       body map, dashboard
     emergency/             protocols, emergency screen, AI helper
     nasa-data/             "Tested on real NASA data" card and chart sheet
 scripts/                   Python scripts that build the data in src/data/

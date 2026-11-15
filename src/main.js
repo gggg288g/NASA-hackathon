@@ -5,7 +5,6 @@ import './core/triage.js';
 import './core/state.js';
 import './core/report.js';
 import './features/medical-officer/dashboard.js';
-import './features/medical-officer/quick-entry.js';
 import './features/astronaut/today.js';
 import './features/astronaut/checkin.js';
 import './features/emergency/protocols.js';
