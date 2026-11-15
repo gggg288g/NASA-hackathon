@@ -119,10 +119,16 @@ function crewWide(day) {
     next: "Check cabin CO₂ and water readings, limit close contact and send a crew-wide report to ground." };
 }
 
+// Which cross-indicator rules fire on a day (no trends, no crew-wide check): used for "since day X" and the timeline.
+const ruleHits = (crew, day) => RULES.filter(rule => rule.test(crew, day)).map(rule => rule.key);
+function sinceDay(crew, key, day) {
+  let d = day; while (d - 1 >= 1 && idxOf(crew, d - 1) >= 0 && RULES.find(r => r.key === key).test(crew, d - 1)) d--;
+  return d;
+}
 // All early warnings for one astronaut on one day (worst first).
 function patterns(crew, day) {
   const out = [];
-  for (const rule of RULES) { const r = rule.test(crew, day); if (r) out.push({ key: rule.key, sys: rule.sys, kind: "Pattern", title: rule.title, ...r }); }
+  for (const rule of RULES) { const r = rule.test(crew, day); if (r) out.push({ key: rule.key, sys: rule.sys, kind: "Pattern", title: rule.title, since: sinceDay(crew, rule.key, day), ...r }); }
   for (const id of FORECAST_IDS) {
     const f = forecast(crew, id, day); if (!f) continue;
     const u = IND[id].unit, rate = Math.abs(f.slope);
@@ -143,7 +149,7 @@ function rechecks(crew, day) {
 // Shared HTML for a warning card (used by Today, the medical officer view and the report).
 function patternHTML(p, k) {
   return `<div class="alert ew tier-${p.tier}">
-    <div class="t"><span>${esc(p.title)}</span><span class="pill tier-${p.tier}">${esc(p.kind)}</span></div>
+    <div class="t"><span>${esc(p.title)}</span><span class="pill tier-${p.tier}">${esc(p.kind)}${p.since ? ` · since day ${p.since}` : ""}</span></div>
     <div class="note">${p.evidence.map(esc).join(" · ")}</div>
     <div>${esc(p.next)}</div>
     ${whyHTML("ew-" + k + p.key, esc(p.why))}
@@ -154,4 +160,4 @@ function recheckHTML(list) {
 }
 
 // Shared with other modules (see README: "How modules share code").
-Object.assign(window, { forecast, RULES, crewWide, patterns, rechecks, patternHTML, recheckHTML });
+Object.assign(window, { forecast, RULES, ruleHits, sinceDay, crewWide, patterns, rechecks, patternHTML, recheckHTML });

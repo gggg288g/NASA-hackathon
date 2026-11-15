@@ -360,3 +360,9 @@ body:not([data-mode="astro"]):not([data-mode="sc"]) .me-field { display: none; }
 .rt-ms { font-size: 22px; font-weight: 600; }
 .rt-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0; }
 .rt-stats .big { font-size: 28px; font-weight: 700; }
+/* Early-warning strip under each crew row of the mission timeline */
+.tl-ew-row { margin: -1px 0 4px; }
+.tl-ew-row .note { font-size: 10px; }
+.tl-ew { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1px; height: 6px; }
+.tl-ew-cell { display: block; border-radius: 2px; }
+.tl-ew-cell.on { background: var(--t); opacity: .55; }

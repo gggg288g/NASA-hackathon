@@ -163,7 +163,13 @@ function renderTimeline() {
       const t = overall(c, r.day).tier;
       return `<button type="button" class="tl-cell tier-${t} ${r.day === st.day && c === st.crew ? "today" : ""} ${r.day <= 0 ? "pre" : ""}" data-crew="${c}" data-day="${r.day}" aria-label="${c} day ${r.day}: ${TIER_LABEL[t]}" title="${c} · ${r.day <= 0 ? "pre-flight" : "day " + r.day}: ${TIER_LABEL[t]}"></button>`;
     }).join("");
-    return `<div class="tl-row"><span class="num">${c}</span><div class="tl-cells">${cells}</div></div>`;
+    // Second strip: days when an early warning (cross-indicator pattern) was active. Shows warnings arriving before the alerts.
+    const ew = ROWS[c].map(r => {
+      const hits = r.day >= 1 ? RULES.map(rule => [rule, rule.test(c, r.day)]).filter(([, x]) => x) : [];
+      const t = hits.some(([, x]) => x.tier === "red") ? "red" : "amber";
+      return `<i class="tl-ew-cell ${hits.length ? "on tier-" + t : ""}" title="${hits.length ? `${c} · day ${r.day}: ${esc(hits.map(([rule]) => rule.title).join("; "))}` : ""}"></i>`;
+    }).join("");
+    return `<div class="tl-row"><span class="num">${c}</span><div class="tl-cells">${cells}</div></div><div class="tl-row tl-ew-row"><span class="note">early</span><div class="tl-ew">${ew}</div></div>`;
   }).join("");
 }
 let OVERALL_CACHE = null;
