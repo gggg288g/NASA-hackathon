@@ -4,7 +4,7 @@ const SAVE_KEY = "crew-health.checkins.v1";
 const loadSaved = () => { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch { return {}; } };
 function persistRow(row) { try { const s = loadSaved(); (s[row.crew_id] = s[row.crew_id] || []).push(row); localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { } }
 const savedCount = () => Object.values(loadSaved()).reduce((n, a) => n + a.length, 0);
-function clearSaved() { try { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(FLUID_KEY); } catch { } location.reload(); }
+function clearSaved() { try { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(FLUID_KEY); localStorage.removeItem("crew-health.pvt.v1"); } catch { } location.reload(); }
 (() => { const s = loadSaved(); for (const c of Object.keys(s)) { if (!ROWS[c]) continue;
   const last = Math.max(...ROWS[c].map(r => r.day));
   s[c].filter(r => r.day > last).sort((a, b) => a.day - b.day).forEach(r => ROWS[c].push(r)); rebuild(c); } })();

@@ -84,6 +84,13 @@ const RULES = [
         why: "In microgravity, calcium leaves the bones and passes through the kidneys. Little urine plus extra calcium is how kidney stones form, and NASA tracks this as a known spaceflight risk. One stone far from Earth could end a mission.",
         next: "Drink a pouch now and one with every meal until you're back above 2,000 ml a day. Restart resistance exercise. Report any side or back pain straight away." };
     } },
+  { key: "reaction", sys: "behavioral", title: "Reactions slower than your normal",
+    test(crew, day) {
+      const r = window.rtLatest && rtLatest(crew, day); if (!r || r.tier === "green") return null;
+      return { tier: r.tier, evidence: [`reaction check: ${r.median} ms median against ${r.baseline} ms normal`, `${r.lapses} lapse${r.lapses === 1 ? "" : "s"} (≥ 500 ms)`],
+        why: "Slower reactions and lapses are the most sensitive objective sign of fatigue. They show up before people feel tired, which is why NASA crews run a reaction-time test on the ISS.",
+        next: "Get a crewmate to double-check safety-critical steps today, and protect tonight's sleep. Repeat the check tomorrow." };
+    } },
   { key: "fatigue", sys: "behavioral", title: "Fatigue building up",
     test(crew, day) {
       const w = win(crew, day, 7), sl = nums(w, "sleep_hours"); if (sl.length < 5) return null;

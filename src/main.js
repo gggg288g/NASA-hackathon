@@ -16,6 +16,7 @@ import './features/self-check/selfcheck.css';
 import './features/self-check/selfcheck.js';
 import './features/self-check/data-link.js';
 import './features/nasa-data/nasa-data.js';
+import './features/reaction/reaction.js';
 import './app/events.js';
 
 // Offline-first: cache the app after the first visit so it keeps working without a connection (built site only).

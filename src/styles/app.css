@@ -351,3 +351,12 @@ body:not([data-mode="astro"]):not([data-mode="sc"]) .me-field { display: none; }
 .ew-h .note { font-weight: 400; }
 .alert.ew + .alert, .alert.ew { margin-bottom: 8px; }
 .alert.ew .btn { justify-self: start; margin-top: 2px; }
+
+/* Reaction-time check */
+.rt-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.rt-pad { width: 100%; height: min(46vh, 320px); border: 0; border-radius: 18px; background: var(--panel-2); color: var(--ink); display: grid; place-items: center; align-content: center; gap: 14px; cursor: pointer; touch-action: manipulation; font: inherit; }
+.rt-dot { width: 64px; height: 64px; border-radius: 50%; background: transparent; border: 2px dashed var(--none); transition: none; }
+.rt-dot.on { background: var(--crit); border-color: var(--crit); }
+.rt-ms { font-size: 22px; font-weight: 600; }
+.rt-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0; }
+.rt-stats .big { font-size: 28px; font-weight: 700; }

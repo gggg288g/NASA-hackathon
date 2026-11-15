@@ -140,6 +140,7 @@ function renderAstro() {
       <h2>${esc(status)}</h2>
       ${isDone ? `<button class="btn bigbtn" type="button" id="astro-next">Start next day</button>` : `<button class="btn primary bigbtn" type="button" id="astro-start">Daily check-in</button>`}
       <button class="btn bigbtn" type="button" data-mode="sc">Self-check</button>
+      <button class="btn bigbtn" type="button" id="astro-rt">Reaction check · 60 s</button>
     </section>
     ${ews.length || rc.length ? `<section class="card ew-card"><h3 class="ew-h">Your health story <span class="note">patterns across your data, before they become alerts</span></h3>${ews.map(p => patternHTML(p, "as")).join("")}${recheckHTML(rc)}</section>` : ""}
     ${flags.items.length ? disc("as-act", `What to do<span class="count">${flags.items.length}</span>`, `
@@ -162,6 +163,7 @@ function renderAstro() {
       <p class="note" style="margin:10px 0 6px">Works offline. Your check-ins are stored on this device only (${window.savedCount ? savedCount() : 0} saved).</p>
       <button class="btn" type="button" id="clear-saved">Clear saved check-ins</button>`, "card")}`;
   const cs = $("#clear-saved"); if (cs) cs.onclick = () => { if (confirm("Delete the check-ins saved on this device?")) clearSaved(); };
+  const rtb = $("#astro-rt"); if (rtb) rtb.onclick = () => openReaction(crew, flags.day);
   const s1 = $("#astro-start"); if (s1) s1.onclick = () => openWizard(crew);
   const s2 = $("#astro-next"); if (s2) s2.onclick = () => { delete am.done[crew]; renderAstro(); };
   const s3 = $("#astro-report"); if (s3) s3.onclick = () => { st.crew = crew; st.day = flags.day; openReport(); };
