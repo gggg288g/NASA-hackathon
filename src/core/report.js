@@ -14,6 +14,9 @@ function openReport(extra) {
       });
     }
   }
+  const ews = patterns(st.crew, st.day).filter(p => am.shareMood || p.sys !== "behavioral");
+  if (ews.length) { lines.push("", "Early warnings (patterns and trends):"); ews.forEach(p => lines.push(`  [${TIER_LABEL[p.tier].toUpperCase()}] ${p.title}: ${p.evidence.join("; ")}`)); }
+  const rc = rechecks(st.crew, st.day); if (rc.length) lines.push("", "Awaiting re-check (once only): " + rc.map(r => `${nameOf(r.id)} ${fmt(r.value, r.id)} ${unitOf(r.id)}`).join(", "));
   const sym = symptoms(st.crew, st.day); if (sym.length) lines.push("", "Symptoms: " + sym.join(", "));
   lines.push("", "Last 7 days (systolic/diastolic, HR, temp, sleep):");
   ROWS[st.crew].filter(r => r.day <= st.day && r.day > st.day - 7).forEach(r => lines.push(`  D${r.day}: ${fmt(r.bp_systolic)}/${fmt(r.bp_diastolic)} mmHg, ${fmt(r.resting_hr)} bpm, ${fmt(r.core_temp, "core_temp")} C, ${fmt(r.sleep_hours)} h`));

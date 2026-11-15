@@ -335,3 +335,10 @@ body:not([data-mode="astro"]):not([data-mode="sc"]) .me-field { display: none; }
   #astro.open-head #helmet, #astro.open-chest #suitL, #astro.open-chest #suitR, #astro.open-limbs #suitLegs, #astro.open-limbs #suitArms { transform: none; }
   #astro .dot.pulse { animation: none; }
 }
+
+/* Early warnings (patterns + trends) */
+.ew-card { background: var(--panel); border-radius: 22px; padding: 18px 20px; display: grid; gap: 8px; box-shadow: var(--shadow); }
+.ew-h { font-size: 16px; font-weight: 650; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; margin: 4px 0 2px; }
+.ew-h .note { font-weight: 400; }
+.alert.ew + .alert, .alert.ew { margin-bottom: 8px; }
+.alert.ew .btn { justify-self: start; margin-top: 2px; }

@@ -36,9 +36,16 @@ function triageSeries(ind, vals) {
         }
       }
     }
-    const tier = worst(a, d);
-    green.push(tier === "green");
-    out.push({ abs: a, dev: d, tier, base });
+    const raw = worst(a, d);
+    // Alarm-fatigue guard: a flag that comes only from the personal baseline (Earth range still normal)
+    // must repeat on 2 of the last 3 readings before it counts. Until then it is a "re-check", not an alert.
+    // Absolute (clinical) Watch/Act tiers are never held back.
+    let recheck = false;
+    if (d && d !== "green" && (a === "green" || a === null) && (dev.metric === "pct_change" || dev.metric === "abs_change"))
+      recheck = !out.slice(-2).some(o => o.dev === "amber" || o.dev === "red");
+    const tier = recheck ? (a || "green") : raw;
+    green.push(raw === "green");
+    out.push({ abs: a, dev: d, tier, base, recheck });
   }
   return out;
 }

@@ -1,6 +1,16 @@
 // Guided daily check-in (incl. Amsler grid and PHQ-9).
+// ---- offline storage: check-ins stay on this device and survive reloads (no network needed) ----
+const SAVE_KEY = "crew-health.checkins.v1";
+const loadSaved = () => { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch { return {}; } };
+function persistRow(row) { try { const s = loadSaved(); (s[row.crew_id] = s[row.crew_id] || []).push(row); localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { } }
+const savedCount = () => Object.values(loadSaved()).reduce((n, a) => n + a.length, 0);
+function clearSaved() { try { localStorage.removeItem(SAVE_KEY); } catch { } location.reload(); }
+(() => { const s = loadSaved(); for (const c of Object.keys(s)) { if (!ROWS[c]) continue;
+  const last = Math.max(...ROWS[c].map(r => r.day));
+  s[c].filter(r => r.day > last).sort((a, b) => a.day - b.day).forEach(r => ROWS[c].push(r)); rebuild(c); } })();
+
 // ---- wizard ----
-const wz = { crew: null, day: 0, steps: [], i: 0, vals: {} };
+const wz ={ crew: null, day: 0, steps: [], i: 0, vals: {} };
 function openWizard(crew) {
   const last = ROWS[crew][ROWS[crew].length - 1];
   Object.assign(wz, { crew, day: last.day + 1, steps: wizSteps(last.day + 1), i: 0, vals: { symptoms: [] } });
@@ -25,6 +35,7 @@ function stepFeedback(step) {
     const v = wz.vals[id]; if (!isNum(v)) return null;
     const r = provisionalTier(wz.crew, id, v); if (!r) continue;
     worstT = worst(worstT, r.tier);
+    if (r.recheck) parts.push("away from your usual: re-measure later, it only counts if it repeats");
     if (isNum(r.base)) {
       const bd = IND[id].baseline_deviation;
       parts.push(bd.metric.startsWith("rolling") ? `${bd.window_days}-day avg ${(+r.base).toFixed(1)}` : `usual ${fmt(+(+r.base).toFixed(2), id)}`);
@@ -69,7 +80,7 @@ function saveWizard() {
   for (const id of Object.keys(IND)) r[id] = isNum(wz.vals[id]) ? wz.vals[id] : null;
   r.est_bone_loss_pct = last.est_bone_loss_pct; r.est_calf_muscle_loss_pct = last.est_calf_muscle_loss_pct;
   const pa = wz.vals.phqItems; r.phq9 = pa && pa.some(isNum) ? pa.reduce((x, y) => x + (y || 0), 0) : null; r.phq9_flag = pa && pa[8] > 0 ? 1 : 0;
-  rows.push(r); rebuild(wz.crew); am.done[wz.crew] = wz.day;
+  rows.push(r); rebuild(wz.crew); am.done[wz.crew] = wz.day; persistRow(r);
 }
 function renderWizSummary() {
   if (am.done[wz.crew] !== wz.day) saveWizard();
@@ -94,4 +105,4 @@ $("#wiz-back").onclick = () => { if (wz.i > 0 && am.done[wz.crew] !== wz.day) { 
 $("#dlg-wiz").addEventListener("close", () => { renderAstro(); });
 
 // Shared with other modules (see README: "How modules share code").
-Object.assign(window, { wz, openWizard, stepFeedback, renderWizStep, saveWizard, renderWizSummary });
+Object.assign(window, { SAVE_KEY, loadSaved, persistRow, savedCount, clearSaved, wz, openWizard, stepFeedback, renderWizStep, saveWizard, renderWizSummary });
