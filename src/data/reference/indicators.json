@@ -1,0 +1,683 @@
+{
+ "_about": "Health indicators for the astronaut self-assessment tool. Each indicator has (a) absolute clinical tiers from public Earth guidelines and (b) personal-baseline deviation tiers, because spaceflight shifts 'normal' (e.g. resting core temp ~+1 C, BP ~-8-10 mmHg). Triage rule of thumb: final tier = worst of absolute tier and deviation tier. Thresholds are hackathon/demo values, not NASA medical standards.",
+ "_tiers": {
+  "green": "Normal - no action",
+  "amber": "Watch - self-care actions, re-measure sooner",
+  "red": "Act - escalate to crew medical officer / flight surgeon"
+ },
+ "indicators": [
+  {
+   "id": "resting_hr",
+   "name": "Resting heart rate",
+   "unit": "bpm",
+   "plain_meaning": "How many times your heart beats per minute while resting.",
+   "how_to_measure": "Chest strap / wrist monitor or 60 s manual pulse count, seated/still, before breakfast.",
+   "frequency": "daily",
+   "body_system": "cardiovascular",
+   "absolute_tiers": {
+    "green": [
+     [
+      50,
+      100
+     ]
+    ],
+    "amber": [
+     [
+      40,
+      50
+     ],
+     [
+      100,
+      120
+     ]
+    ],
+    "red": [
+     [
+      0,
+      40
+     ],
+     [
+      120,
+      999
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "pct_change",
+    "amber": 10,
+    "red": 20
+   },
+   "spaceflight_note": "Shuttle-era 24 h studies found in-flight heart rate and its variability were reduced; long-duration ISS data show minimal change. A sustained rise from baseline can point to dehydration, infection, fever or stress.",
+   "actions": {
+    "amber": [
+     "Re-measure after 10 min rest",
+     "Check hydration and sleep",
+     "Log symptoms (dizziness, palpitations)"
+    ],
+    "red": [
+     "Stop strenuous activity",
+     "Record ECG if available",
+     "Notify crew medical officer and flight surgeon"
+    ]
+   },
+   "sources": [
+    "https://scite.ai/authors/john-b-charles-W8zrrg",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5516430"
+   ]
+  },
+  {
+   "id": "bp_systolic",
+   "name": "Blood pressure (systolic)",
+   "unit": "mmHg",
+   "plain_meaning": "The top number: pressure in your arteries when the heart beats.",
+   "how_to_measure": "Automatic arm cuff, seated/restrained, arm at heart level, average 2 readings 1 min apart.",
+   "frequency": "daily",
+   "body_system": "cardiovascular",
+   "absolute_tiers": {
+    "green": [
+     [
+      90,
+      130
+     ]
+    ],
+    "amber": [
+     [
+      80,
+      90
+     ],
+     [
+      130,
+      180
+     ]
+    ],
+    "red": [
+     [
+      0,
+      80
+     ],
+     [
+      180,
+      999
+     ]
+    ]
+   },
+   "absolute_categories_aha_2025": {
+    "normal": "<120 and <80",
+    "elevated": "120-129 and <80",
+    "stage_1": "130-139 or 80-89",
+    "stage_2": ">=140 or >=90",
+    "severe": ">180 and/or >120"
+   },
+   "baseline_deviation": {
+    "metric": "abs_change",
+    "amber": 15,
+    "red": 25
+   },
+   "spaceflight_note": "On the ISS, 24 h ambulatory BP falls by about 8-10 mmHg because blood vessels relax (systemic vascular resistance drops ~39%). So a reading that looks 'normal' on Earth may already be a rise from this astronaut's in-flight baseline.",
+   "actions": {
+    "amber": [
+     "Re-measure twice over 30 min",
+     "Reduce sodium and caffeine",
+     "Check sleep and stress score"
+    ],
+    "red": [
+     "Re-measure immediately",
+     "If >180 systolic or with headache/vision change: notify flight surgeon now"
+    ]
+   },
+   "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/4324706/",
+    "https://pcna.net/news/putting-updated-blood-pressure-guidelines-into-practice/",
+    "https://www.2minutemedicine.com/guidelines/high-blood-pressure/"
+   ]
+  },
+  {
+   "id": "bp_diastolic",
+   "name": "Blood pressure (diastolic)",
+   "unit": "mmHg",
+   "plain_meaning": "The bottom number: pressure in your arteries between beats.",
+   "how_to_measure": "Same reading as systolic.",
+   "frequency": "daily",
+   "body_system": "cardiovascular",
+   "absolute_tiers": {
+    "green": [
+     [
+      60,
+      80
+     ]
+    ],
+    "amber": [
+     [
+      50,
+      60
+     ],
+     [
+      80,
+      120
+     ]
+    ],
+    "red": [
+     [
+      0,
+      50
+     ],
+     [
+      120,
+      999
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "abs_change",
+    "amber": 10,
+    "red": 20
+   },
+   "spaceflight_note": "Diastolic pressure was reported lower in flight (about 5 mmHg in the first 2 weeks of Shuttle flights).",
+   "actions": {
+    "amber": [
+     "Re-measure",
+     "Review hydration and salt intake"
+    ],
+    "red": [
+     "Notify flight surgeon"
+    ]
+   },
+   "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/4324706/",
+    "https://pcna.net/news/putting-updated-blood-pressure-guidelines-into-practice/"
+   ]
+  },
+  {
+   "id": "glucose",
+   "name": "Blood glucose (fasting)",
+   "unit": "mg/dL",
+   "plain_meaning": "Sugar level in your blood before eating - your body's main fuel.",
+   "how_to_measure": "Finger-prick glucometer or continuous glucose monitor, before breakfast.",
+   "frequency": "daily",
+   "body_system": "metabolic",
+   "absolute_tiers": {
+    "green": [
+     [
+      70,
+      100
+     ]
+    ],
+    "amber": [
+     [
+      54,
+      70
+     ],
+     [
+      100,
+      126
+     ]
+    ],
+    "red": [
+     [
+      0,
+      54
+     ],
+     [
+      126,
+      999
+     ]
+    ]
+   },
+   "absolute_categories": {
+    "hypo_level_1": "<70 and >=54 (ADA)",
+    "hypo_level_2": "<54 (ADA, clinically significant)",
+    "fasting_prediabetes_range": "100-125",
+    "fasting_diabetes_range": ">=126"
+   },
+   "baseline_deviation": {
+    "metric": "abs_change",
+    "amber": 15,
+    "red": 30
+   },
+   "spaceflight_note": "Spaceflight is associated with insulin-resistance signals (gene/pathway changes in astronauts; NASA Twins Study protein changes). Track upward drift.",
+   "actions": {
+    "amber": [
+     "If low: 15-15 rule - eat 15 g fast carbs, re-check in 15 min",
+     "If high: review meal timing, re-test tomorrow"
+    ],
+    "red": [
+     "If <54: treat immediately with fast carbs, buddy check, notify crew medical officer",
+     "If >=126 repeatedly: flag to flight surgeon"
+    ]
+   },
+   "sources": [
+    "https://diabetes.org/sites/dpro/files/2025-01/severehypoglycemia2_2024_final.pdf",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11166981"
+   ]
+  },
+  {
+   "id": "core_temp",
+   "name": "Core body temperature",
+   "unit": "C",
+   "plain_meaning": "The temperature inside your body. Too high can mean infection or overheating.",
+   "how_to_measure": "Forehead heat-flux sensor (as used on ISS) or thermometer, at rest, same time daily.",
+   "frequency": "daily",
+   "body_system": "thermoregulation",
+   "absolute_tiers": {
+    "green": [
+     [
+      36.0,
+      38.3
+     ]
+    ],
+    "amber": [
+     [
+      35.0,
+      36.0
+     ],
+     [
+      38.3,
+      39.0
+     ]
+    ],
+    "red": [
+     [
+      0,
+      35.0
+     ],
+     [
+      39.0,
+      99
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "abs_change",
+    "amber": 0.6,
+    "red": 1.0
+   },
+   "spaceflight_note": "IMPORTANT: on the ISS resting core temperature rises gradually over ~2.5 months to about 38 C (~1 C above Earth) and can exceed 40 C during exercise. A fixed 38 C fever cut-off would false-alarm constantly - use deviation from the astronaut's own in-flight baseline.",
+   "actions": {
+    "amber": [
+     "Re-measure at rest in 30 min (not after exercise)",
+     "Check for symptoms: chills, sore throat, rash",
+     "Hydrate"
+    ],
+    "red": [
+     "Stop exercise",
+     "Symptom checklist + notify crew medical officer",
+     "Consider infection workup (immune system)"
+    ]
+   },
+   "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5701078",
+    "https://www.sci.news/space/weightlessness-body-temperature-05609.html"
+   ]
+  },
+  {
+   "id": "spo2",
+   "name": "Blood oxygen saturation",
+   "unit": "%",
+   "plain_meaning": "How much of your blood is carrying oxygen.",
+   "how_to_measure": "Finger pulse oximeter, at rest.",
+   "frequency": "daily",
+   "body_system": "respiratory",
+   "absolute_tiers": {
+    "green": [
+     [
+      95,
+      101
+     ]
+    ],
+    "amber": [
+     [
+      92,
+      95
+     ]
+    ],
+    "red": [
+     [
+      0,
+      92
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "abs_change",
+    "amber": 3,
+    "red": 5
+   },
+   "spaceflight_note": "Not a classic spaceflight hazard, but relevant to the hostile closed environment (cabin CO2/air quality, EVA prep). Thresholds are general clinical convention - verify.",
+   "actions": {
+    "amber": [
+     "Re-measure, warm hands",
+     "Check cabin CO2 readings"
+    ],
+    "red": [
+     "Notify crew medical officer immediately",
+     "Check cabin atmosphere"
+    ]
+   },
+   "sources": [
+    "general clinical convention - verify against challenge resources"
+   ]
+  },
+  {
+   "id": "sleep_hours",
+   "name": "Sleep duration",
+   "unit": "hours",
+   "plain_meaning": "How long you actually slept last night.",
+   "how_to_measure": "Wrist actigraphy or self-report on waking.",
+   "frequency": "daily",
+   "body_system": "behavioral",
+   "absolute_tiers": {
+    "green": [
+     [
+      5,
+      24
+     ]
+    ],
+    "amber": [
+     [
+      4,
+      5
+     ]
+    ],
+    "red": [
+     [
+      0,
+      4
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "rolling_avg_below",
+    "window_days": 3,
+    "amber": 6.0,
+    "red": 5.0
+   },
+   "spaceflight_note": "NASA schedules 8.5 h, but a 10-year actigraphy study found ISS crews averaged just over 6 h; a newer NASA Ames analysis with more regular schedules found longer in-flight sleep. Sleep <5 h was linked to worse behavioural states. A single short night is only amber; the 3-day rolling average (amber <6 h, red <5 h) catches real sleep debt.",
+   "actions": {
+    "amber": [
+     "Protect next sleep period",
+     "Limit screens/light before sleep",
+     "Avoid caffeine late in the day"
+    ],
+    "red": [
+     "Defer safety-critical tasks if possible",
+     "Talk to crew medical officer about sleep plan"
+    ]
+   },
+   "sources": [
+    "https://www.news-medical.net/news/20140810/Space-missions-affect-sleep-patterns-in-astronauts.aspx",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC8919197",
+    "https://ntrs.nasa.gov/api/citations/20230003916/downloads/AsMA%20Poster.pdf"
+   ]
+  },
+  {
+   "id": "mood",
+   "name": "Mood",
+   "unit": "score 1-5",
+   "plain_meaning": "How you feel today: 1 = very low, 5 = great.",
+   "how_to_measure": "Self-rating slider at end of day.",
+   "frequency": "daily",
+   "body_system": "behavioral",
+   "absolute_tiers": {
+    "green": [
+     [
+      3,
+      6
+     ]
+    ],
+    "amber": [
+     [
+      2,
+      3
+     ]
+    ],
+    "red": [
+     [
+      0,
+      2
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "rolling_avg_below",
+    "window_days": 5,
+    "amber": 3.0,
+    "red": 2.0
+   },
+   "spaceflight_note": "Isolation and confinement are one of NASA HRP's five hazards. Look for sustained dips, not one bad day.",
+   "actions": {
+    "amber": [
+     "Schedule private call/message with family",
+     "Recreation / exercise",
+     "Journal prompt"
+    ],
+    "red": [
+     "Private conference with flight surgeon / behavioural health team"
+    ]
+   },
+   "sources": [
+    "NASA Human Research Program - five hazards of human spaceflight (see challenge Resources tab)"
+   ]
+  },
+  {
+   "id": "stress",
+   "name": "Stress",
+   "unit": "score 1-5",
+   "plain_meaning": "How stressed you feel: 1 = calm, 5 = overwhelmed.",
+   "how_to_measure": "Self-rating slider at end of day.",
+   "frequency": "daily",
+   "body_system": "behavioral",
+   "absolute_tiers": {
+    "green": [
+     [
+      0,
+      4
+     ]
+    ],
+    "amber": [
+     [
+      4,
+      5
+     ]
+    ],
+    "red": [
+     [
+      5,
+      6
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "rolling_avg_above",
+    "window_days": 5,
+    "amber": 3.5,
+    "red": 4.5
+   },
+   "spaceflight_note": "Spaceflight raises stress hormones (cortisol, adrenaline), which suppress the immune system and are linked to latent virus reactivation.",
+   "actions": {
+    "amber": [
+     "Breathing exercise",
+     "Review workload with commander"
+    ],
+    "red": [
+     "Behavioural health conference"
+    ]
+   },
+   "sources": [
+    "https://www.theweek.co.uk/100266/nasa-issues-warning-about-herpes-in-space"
+   ]
+  },
+  {
+   "id": "body_mass",
+   "name": "Body mass",
+   "unit": "kg",
+   "plain_meaning": "Your body weight. In space this is measured by mass devices, not scales.",
+   "how_to_measure": "Mass measurement device (e.g. spring/inertial), weekly.",
+   "frequency": "weekly",
+   "body_system": "metabolic",
+   "absolute_tiers": null,
+   "baseline_deviation": {
+    "metric": "pct_change",
+    "amber": 3,
+    "red": 5
+   },
+   "spaceflight_note": "Decreased body mass is a documented spaceflight change (Twins Study); poor appetite is common. Loss also hints at muscle wasting / under-eating.",
+   "actions": {
+    "amber": [
+     "Review calorie and protein intake",
+     "Eat soon after exercise"
+    ],
+    "red": [
+     "Nutrition plan review with flight surgeon"
+    ]
+   },
+   "sources": [
+    "https://scite.ai/authors/john-b-charles-W8zrrg",
+    "https://themoscowtimes.com/2010/08/29/study-long-stay-makes-astronauts-weak-as-80-year-olds-a958/pdf"
+   ]
+  },
+  {
+   "id": "exercise_min",
+   "name": "Exercise completed",
+   "unit": "minutes",
+   "plain_meaning": "Minutes of prescribed exercise done today - your main defence against bone and muscle loss.",
+   "how_to_measure": "Logged automatically from treadmill/cycle/resistance device or entered manually.",
+   "frequency": "daily",
+   "body_system": "musculoskeletal",
+   "absolute_tiers": {
+    "green": [
+     [
+      90,
+      9999
+     ]
+    ],
+    "amber": [
+     [
+      45,
+      90
+     ]
+    ],
+    "red": [
+     [
+      0,
+      45
+     ]
+    ]
+   },
+   "baseline_deviation": {
+    "metric": "rolling_avg_below",
+    "window_days": 7,
+    "amber": 90,
+    "red": 60
+   },
+   "spaceflight_note": "ISS crews exercise 1-2 h/day; calf muscle volume still fell ~13% over 6 months. Higher intensity protects muscle better than more volume.",
+   "actions": {
+    "amber": [
+     "Schedule a make-up session",
+     "Prioritise resistance work"
+    ],
+    "red": [
+     "Discuss schedule conflict with commander - bone/muscle loss accelerates"
+    ]
+   },
+   "sources": [
+    "https://blogs.scientificamerican.com/news-blog/spaceflight-wreaks-havoc-on-astrona-2009-04-08/",
+    "https://tucson.com/news/article_a0681051-6010-51bc-a0d6-9dc8217ad6d9.html"
+   ]
+  },
+  {
+   "id": "vision_check",
+   "name": "Eye check (Amsler grid)",
+   "unit": "grade 0-2",
+   "plain_meaning": "Weekly Amsler grid test. 0 = all lines straight, 1 = some lines wavy or blurred, 2 = a patch is missing or dark.",
+   "how_to_measure": "Cover one eye, wear your usual reading correction, stare at the centre dot of the Amsler grid. Repeat with the other eye.",
+   "frequency": "weekly",
+   "body_system": "neuro_ocular",
+   "absolute_tiers": {
+    "green": [
+     [
+      0,
+      0.5
+     ]
+    ],
+    "amber": [
+     [
+      0.5,
+      1.5
+     ]
+    ],
+    "red": [
+     [
+      1.5,
+      3
+     ]
+    ]
+   },
+   "baseline_deviation": null,
+   "spaceflight_note": "SANS (spaceflight-associated neuro-ocular syndrome): at least one feature found in 81% of NASA astronauts after long missions. Caused by head-ward fluid shift.",
+   "actions": {
+    "amber": [
+     "Repeat test in 2 days",
+     "Note headaches",
+     "Schedule ocular ultrasound/OCT"
+    ],
+    "red": [
+     "Notify flight surgeon - imaging required"
+    ]
+   },
+   "sources": [
+    "https://theophthalmologist.com/issues/2026/articles/august/standardizing-sans-in-spaceflight/",
+    "https://ntrs.nasa.gov/citations/20220014606",
+    "https://ntrs.nasa.gov/citations/20100039152",
+    "https://eyewiki.aao.org/Spaceflight-Associated_Neuro-Ocular_Syndrome_(SANS)"
+   ]
+  },
+  {
+   "id": "phq9",
+   "name": "Mood check (PHQ-9)",
+   "unit": "score 0-27",
+   "plain_meaning": "A validated 9-question screen for low mood over the last 2 weeks.",
+   "how_to_measure": "Answer 9 quick questions in the check-in every 2 weeks.",
+   "frequency": "fortnightly",
+   "body_system": "behavioral",
+   "absolute_tiers": {
+    "green": [
+     [
+      0,
+      5
+     ]
+    ],
+    "amber": [
+     [
+      5,
+      10
+     ]
+    ],
+    "red": [
+     [
+      10,
+      28
+     ]
+    ]
+   },
+   "baseline_deviation": null,
+   "spaceflight_note": "PHQ-9 total of 10 or more is the standard screening cut-point (88% sensitivity and specificity for major depression in primary care). Validated on the general population, not astronauts; NASA uses its own behavioural suite (APEX) on missions. The last question (thoughts of self-harm) always triggers an urgent prompt.",
+   "actions": {
+    "amber": [
+     "Repeat the check in 2 weeks",
+     "Keep routines: exercise, sleep, private calls home"
+    ],
+    "red": [
+     "Book a private conference with the behavioural health team or flight surgeon today",
+     "Tell the crew medical officer"
+    ]
+   },
+   "sources": [
+    "https://jacobimed.org/public/Ambulatory_files/mlove/CurriculumWomenandGeri/Depression/Depression%20articles/PHQ-9ReviewKroenke.pdf",
+    "https://www.hivprep.uw.edu/page/mental-health-screening/phq-9",
+    "https://ntrs.nasa.gov/citations/20250011721"
+   ]
+  }
+ ],
+ "_range_convention": "All tier ranges are half-open [lo, hi). Lookup order: if value falls in any red range -> red; elif any amber range -> amber; else green.",
+ "_baseline_method": "Personal baseline = median of the astronaut's GREEN readings from 7 to 21 days ago. Lagged so a slow drift over 1-2 weeks isn't absorbed into 'normal'; green-only so a flagged episode doesn't become the new normal (and recovery isn't flagged as a change). Early in the mission, fall back to the last 14 green readings incl. pre-flight. Expect a few amber flags in flight days 1-14 as the body adapts (e.g. BP drops ~9 mmHg) - label this 'adaptation phase' in the UI."
+}

@@ -1,0 +1,4058 @@
+{
+ "timepoints": [
+  {
+   "id": "L-92",
+   "day": -92,
+   "phase": "pre-flight"
+  },
+  {
+   "id": "L-44",
+   "day": -44,
+   "phase": "pre-flight"
+  },
+  {
+   "id": "L-3",
+   "day": -3,
+   "phase": "pre-flight"
+  },
+  {
+   "id": "R+1",
+   "day": 1,
+   "phase": "post-flight"
+  },
+  {
+   "id": "R+45",
+   "day": 45,
+   "phase": "post-flight"
+  },
+  {
+   "id": "R+82",
+   "day": 82,
+   "phase": "post-flight"
+  },
+  {
+   "id": "R+194",
+   "day": 194,
+   "phase": "post-flight"
+  }
+ ],
+ "crew": [
+  "C001",
+  "C002",
+  "C003",
+  "C004"
+ ],
+ "analytes": [
+  {
+   "id": "glucose",
+   "label": "Glucose",
+   "unit": "mg/dL",
+   "system": "metabolic",
+   "what": "Blood sugar (body's main fuel).",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 80.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 83.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 3.8,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 80.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 69.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": -13.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 90.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 12.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 84.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 91.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 13.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 87.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 8.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 72.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 69.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": -4.2,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 72.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 78.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 8.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 83.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 15.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 44.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "low",
+       "dev_pct": -38.9,
+       "personal": "red"
+      },
+      {
+       "tp": "R+82",
+       "v": 77.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 6.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 84.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 16.7,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 75.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 77.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 2.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 62.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "low",
+       "dev_pct": -17.3,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 75.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 103.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "high",
+       "dev_pct": 37.3,
+       "personal": "red"
+      },
+      {
+       "tp": "R+45",
+       "v": 36.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "low",
+       "dev_pct": -52.0,
+       "personal": "red"
+      },
+      {
+       "tp": "R+82",
+       "v": 80.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 6.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 73.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": -2.7,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 83.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 100.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "high",
+       "dev_pct": 20.5,
+       "personal": "amber"
+      },
+      {
+       "tp": "L-44",
+       "v": 83.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 56.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "low",
+       "dev_pct": -32.5,
+       "personal": "red"
+      },
+      {
+       "tp": "R+1",
+       "v": 97.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 16.9,
+       "personal": "amber"
+      },
+      {
+       "tp": "R+45",
+       "v": 43.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "low",
+       "dev_pct": -48.2,
+       "personal": "red"
+      },
+      {
+       "tp": "R+82",
+       "v": 80.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": -3.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 84.0,
+       "lo": 65.0,
+       "hi": 99.0,
+       "lab": "normal",
+       "dev_pct": 1.2,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "sodium",
+   "label": "Sodium",
+   "unit": "mmol/L",
+   "system": "metabolic",
+   "what": "Salt balance; tracks hydration and fluid shifts.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 141.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 141.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 139.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -1.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 142.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 138.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -2.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 138.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -2.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 140.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 137.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -2.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 142.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 142.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 141.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 143.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 137.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -3.5,
+       "personal": "amber"
+      },
+      {
+       "tp": "R+45",
+       "v": 140.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -1.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 141.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 138.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -2.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 139.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 139.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 139.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 138.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 137.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -1.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 136.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -2.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 138.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 137.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -1.4,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 140.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 138.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -1.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 140.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 141.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 140.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 139.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": -0.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 140.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 141.0,
+       "lo": 135.0,
+       "hi": 146.0,
+       "lab": "normal",
+       "dev_pct": 0.7,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "potassium",
+   "label": "Potassium",
+   "unit": "mmol/L",
+   "system": "cardiovascular",
+   "what": "Needed for normal heart rhythm and muscle function.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 4.2,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 4.6,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 9.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 4.2,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3.9,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -7.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4.4,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 4.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.0,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -4.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4.3,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 2.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.3,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 2.4,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 3.9,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 3.9,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 4.0,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 2.6,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3.8,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -2.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 3.5,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -10.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.1,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 5.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 3.7,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -5.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.4,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 12.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 3.5,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 3.7,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 5.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 3.5,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3.3,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "low",
+       "dev_pct": -5.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 3.0,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "low",
+       "dev_pct": -14.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.4,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 25.7,
+       "personal": "amber"
+      },
+      {
+       "tp": "R+82",
+       "v": 3.7,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 5.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 3.8,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 8.6,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 4.2,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 4.2,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 4.2,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3.7,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -11.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4.0,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -4.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 5.9,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "high",
+       "dev_pct": 40.5,
+       "personal": "red"
+      },
+      {
+       "tp": "R+82",
+       "v": 4.2,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 3.8,
+       "lo": 3.5,
+       "hi": 5.3,
+       "lab": "normal",
+       "dev_pct": -9.5,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "calcium",
+   "label": "Calcium",
+   "unit": "mg/dL",
+   "system": "musculoskeletal",
+   "what": "Bone mineral; rises when bone breaks down in microgravity.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 9.7,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 9.7,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 10.0,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 3.1,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 9.6,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -1.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 9.7,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 9.6,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -1.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 10.1,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 4.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 9.4,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -3.1,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 9.7,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 10.2,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": 5.2,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 9.7,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 9.3,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": -4.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 9.2,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": -5.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 9.3,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": -4.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 9.7,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 9.5,
+       "lo": 8.6,
+       "hi": 10.4,
+       "lab": "normal",
+       "dev_pct": -2.1,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 9.5,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 9.3,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -2.1,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 10.3,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 8.4,
+       "personal": "amber"
+      },
+      {
+       "tp": "L-3",
+       "v": 9.5,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 9.4,
+       "lo": 8.6,
+       "hi": 10.2,
+       "lab": "normal",
+       "dev_pct": -1.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 9.6,
+       "lo": 8.6,
+       "hi": 10.2,
+       "lab": "normal",
+       "dev_pct": 1.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 10.0,
+       "lo": 8.6,
+       "hi": 10.2,
+       "lab": "normal",
+       "dev_pct": 5.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 9.6,
+       "lo": 8.6,
+       "hi": 10.2,
+       "lab": "normal",
+       "dev_pct": 1.1,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 10.1,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 10.0,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -1.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 10.1,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 10.2,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": 1.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 9.8,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -3.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 9.8,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -3.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 10.0,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -1.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 9.8,
+       "lo": 8.6,
+       "hi": 10.3,
+       "lab": "normal",
+       "dev_pct": -3.0,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "creatinine",
+   "label": "Creatinine",
+   "unit": "mg/dL",
+   "system": "metabolic",
+   "what": "Kidney function and muscle mass marker.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 1.24,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 1.24,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 1.1,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -11.3,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 1.37,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "high",
+       "dev_pct": 10.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 1.12,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -9.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 1.11,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -10.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 1.25,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 0.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 1.29,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 4.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 0.88,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 0.83,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": -5.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 0.88,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 0.96,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": 9.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 0.95,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": 8.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 1.02,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": 15.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 0.82,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": -6.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 1.02,
+       "lo": 0.5,
+       "hi": 1.05,
+       "lab": "normal",
+       "dev_pct": 15.9,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 1.03,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 1.0,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -2.9,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 1.03,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 1.08,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 4.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 0.89,
+       "lo": 0.5,
+       "hi": 1.1,
+       "lab": "normal",
+       "dev_pct": -13.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 0.94,
+       "lo": 0.5,
+       "hi": 1.1,
+       "lab": "normal",
+       "dev_pct": -8.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 0.89,
+       "lo": 0.5,
+       "hi": 1.1,
+       "lab": "normal",
+       "dev_pct": -13.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 1.1,
+       "lo": 0.5,
+       "hi": 1.1,
+       "lab": "normal",
+       "dev_pct": 6.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 1.13,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 1.14,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 0.9,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 1.08,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -4.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 1.13,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 1.15,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 1.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 1.08,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -4.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 1.11,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": -1.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 1.31,
+       "lo": 0.6,
+       "hi": 1.35,
+       "lab": "normal",
+       "dev_pct": 15.9,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "bun",
+   "label": "Urea nitrogen (BUN)",
+   "unit": "mg/dL",
+   "system": "metabolic",
+   "what": "Kidney function and hydration marker.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 20.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 25.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 25.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 19.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": -5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 20.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 18.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": -10.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 15.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": -25.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 22.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 10.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 28.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "high",
+       "dev_pct": 40.0,
+       "personal": "amber"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 16.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 14.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": -12.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 16.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 17.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 6.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 20.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 25.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 19.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 18.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 16.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 18.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 12.5,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 19.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 17.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": -10.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 19.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 26.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "high",
+       "dev_pct": 36.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 21.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 10.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 19.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 23.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 21.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 28.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "high",
+       "dev_pct": 47.4,
+       "personal": "amber"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 19.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 22.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 15.8,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 19.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 19.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 26.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "high",
+       "dev_pct": 36.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 21.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": 10.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 16.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "normal",
+       "dev_pct": -15.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 27.0,
+       "lo": 7.0,
+       "hi": 25.0,
+       "lab": "high",
+       "dev_pct": 42.1,
+       "personal": "amber"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "albumin",
+   "label": "Albumin",
+   "unit": "g/dL",
+   "system": "metabolic",
+   "what": "Main blood protein; reflects nutrition and fluid status.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 5.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 5.0,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 5.0,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 4.9,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -2.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4.9,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -2.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.9,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -2.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 5.1,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 2.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.6,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -8.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 4.6,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 4.9,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 6.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 4.6,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 4.3,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -6.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4.4,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -4.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.2,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -8.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4.5,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -2.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.3,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -6.5,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 4.4,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 4.4,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 4.9,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 11.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 4.2,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -4.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4.2,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -4.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.5,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 2.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4.8,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 9.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.4,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 4.6,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 4.6,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 4.4,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -4.3,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 4.6,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4.5,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -2.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.5,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -2.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4.6,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.3,
+       "lo": 3.6,
+       "hi": 5.1,
+       "lab": "normal",
+       "dev_pct": -6.5,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "alt",
+   "label": "ALT (liver enzyme)",
+   "unit": "U/L",
+   "system": "metabolic",
+   "what": "Liver stress marker.",
+   "source": "OSD-575 (CMP)",
+   "series": {
+    "C001": {
+     "baseline": 15.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 15.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 16.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 6.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 13.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -13.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 9.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -40.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 11.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -26.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 15.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 15.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 19.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 16.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -15.8,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 24.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": 26.3,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 19.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 16.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -15.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 14.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -26.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 17.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -10.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 17.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -10.5,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 13.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 12.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -7.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 13.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 13.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 19.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": 46.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 17.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": 30.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 12.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -7.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 10.0,
+       "lo": 6.0,
+       "hi": 29.0,
+       "lab": "normal",
+       "dev_pct": -23.1,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 37.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 37.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 35.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -5.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 37.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 40.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 8.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 32.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -13.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 23.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": -37.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 43.0,
+       "lo": 9.0,
+       "hi": 46.0,
+       "lab": "normal",
+       "dev_pct": 16.2,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "wbc",
+   "label": "White blood cells",
+   "unit": "10\u00b3/\u00b5L",
+   "system": "immune",
+   "what": "Infection-fighting cells.",
+   "source": "OSD-569 (CBC)",
+   "series": {
+    "C001": {
+     "baseline": 5.5,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 5.4,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -1.8,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 5.5,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 7.0,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 27.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 5.0,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -9.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4.9,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -10.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4.9,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -10.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4.9,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -10.9,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 6.5,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 6.5,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 5.4,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -16.9,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 7.2,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 10.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 5.5,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -15.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 6.4,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -1.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 5.3,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -18.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 6.4,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -1.5,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 9.55,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": null,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": null,
+       "personal": null
+      },
+      {
+       "tp": "L-44",
+       "v": 9.3,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -2.6,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 9.8,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 2.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 7.0,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -26.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 7.8,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -18.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 8.8,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -7.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 7.4,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -22.5,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 7.7,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 7.7,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 6.4,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -16.9,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 10.6,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 37.7,
+       "personal": "amber"
+      },
+      {
+       "tp": "R+1",
+       "v": 8.1,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 5.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 6.8,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": -11.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 7.9,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 2.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 8.3,
+       "lo": 3.8,
+       "hi": 10.8,
+       "lab": "normal",
+       "dev_pct": 7.8,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "lymph",
+   "label": "Lymphocytes",
+   "unit": "cells/\u00b5L",
+   "system": "immune",
+   "what": "Immune cells that control viruses; stress lowers them.",
+   "source": "OSD-569 (CBC)",
+   "series": {
+    "C001": {
+     "baseline": 2241.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 2241.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 1859.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -17.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 2667.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 19.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 1640.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -26.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 2146.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -4.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 2171.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -3.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 1847.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -17.6,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 2119.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 2119.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 1982.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -6.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 2873.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 35.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 1540.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -27.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 2874.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 35.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 1701.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -19.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 2573.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 21.4,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 2619.5,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": null,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": null,
+       "personal": null
+      },
+      {
+       "tp": "L-44",
+       "v": 2083.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -20.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3156.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 20.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 2086.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -20.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 2379.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -9.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 3247.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 24.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 2220.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -15.3,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 1786.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 1786.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 1613.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": -9.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 2947.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 65.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 2155.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 20.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 1938.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 8.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 2307.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 29.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 2639.0,
+       "lo": 850.0,
+       "hi": 3900.0,
+       "lab": "normal",
+       "dev_pct": 47.8,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "neut",
+   "label": "Neutrophils",
+   "unit": "cells/\u00b5L",
+   "system": "immune",
+   "what": "First-responder immune cells; rise with stress.",
+   "source": "OSD-569 (CBC)",
+   "series": {
+    "C001": {
+     "baseline": 2998.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 2349.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -21.6,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 2998.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3570.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 19.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 2685.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -10.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 2200.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -26.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 1994.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -33.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 2391.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -20.2,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 3701.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 3705.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 0.1,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 2873.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -22.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 3701.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 3328.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -10.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 2765.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -25.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 3132.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -15.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 3123.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -15.6,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 6100.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": null,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": null,
+       "personal": null
+      },
+      {
+       "tp": "L-44",
+       "v": 6408.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 5792.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4088.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -33.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 4618.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -24.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4576.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -25.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4151.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -32.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 4766.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 4766.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 3699.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -22.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 6318.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": 32.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 4528.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 3618.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -24.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 4361.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -8.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 4200.0,
+       "lo": 1500.0,
+       "hi": 7800.0,
+       "lab": "normal",
+       "dev_pct": -11.9,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "hgb",
+   "label": "Hemoglobin",
+   "unit": "g/dL",
+   "system": "cardiovascular",
+   "what": "Oxygen-carrying protein in red cells.",
+   "source": "OSD-569 (CBC)",
+   "series": {
+    "C001": {
+     "baseline": 14.7,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 14.1,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -4.1,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 14.9,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 1.4,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 14.7,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 14.7,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 14.3,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -2.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 15.7,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 6.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 14.1,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -4.1,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 12.8,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 13.2,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": 3.1,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 12.8,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 11.5,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "low",
+       "dev_pct": -10.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 12.1,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": -5.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 12.2,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": -4.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 11.5,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "low",
+       "dev_pct": -10.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 12.7,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": -0.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 13.850000000000001,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": null,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": null,
+       "personal": null
+      },
+      {
+       "tp": "L-44",
+       "v": 14.4,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 4.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 13.3,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -4.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 13.5,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": -2.5,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 14.6,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": 5.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 14.4,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": 4.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 13.3,
+       "lo": 11.7,
+       "hi": 15.5,
+       "lab": "normal",
+       "dev_pct": -4.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 16.8,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 17.0,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 1.2,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 16.6,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -1.2,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 16.8,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 16.5,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -1.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 16.8,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 16.4,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -2.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 16.5,
+       "lo": 13.2,
+       "hi": 17.1,
+       "lab": "normal",
+       "dev_pct": -1.8,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "hct",
+   "label": "Hematocrit",
+   "unit": "%",
+   "system": "cardiovascular",
+   "what": "Share of blood volume that is red cells; shifts with fluid loss.",
+   "source": "OSD-569 (CBC)",
+   "series": {
+    "C001": {
+     "baseline": 44.5,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 42.5,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -4.5,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 45.1,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": 1.3,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 44.5,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 43.6,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -2.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 43.3,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -2.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 46.1,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": 3.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 41.8,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -6.1,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 37.8,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 40.8,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": 7.9,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 37.8,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 35.9,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": -5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 36.4,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": -3.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 37.1,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": -1.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 34.7,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "low",
+       "dev_pct": -8.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 38.3,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": 1.3,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 42.1,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": null,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": null,
+       "personal": null
+      },
+      {
+       "tp": "L-44",
+       "v": 42.6,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": 1.2,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 41.6,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -1.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 41.4,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": -1.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 44.3,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": 5.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 44.6,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": 5.9,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 40.4,
+       "lo": 35.0,
+       "hi": 45.0,
+       "lab": "normal",
+       "dev_pct": -4.0,
+       "personal": "green"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 49.1,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 49.1,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 50.0,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": 1.8,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 49.0,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -0.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 48.3,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -1.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 49.0,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -0.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 47.5,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -3.3,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 48.0,
+       "lo": 38.5,
+       "hi": 50.0,
+       "lab": "normal",
+       "dev_pct": -2.2,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "plt",
+   "label": "Platelets",
+   "unit": "10\u00b3/\u00b5L",
+   "system": "cardiovascular",
+   "what": "Clotting cells.",
+   "source": "OSD-569 (CBC)",
+   "series": {
+    "C001": {
+     "baseline": 241.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 241.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 237.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -1.7,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 258.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 7.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 227.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -5.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 228.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -5.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 257.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 6.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 214.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -11.2,
+       "personal": "green"
+      }
+     ]
+    },
+    "C002": {
+     "baseline": 241.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 241.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 229.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 241.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 252.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 4.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 252.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 4.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 245.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 1.7,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 243.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.8,
+       "personal": "green"
+      }
+     ]
+    },
+    "C003": {
+     "baseline": 356.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": null,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": null,
+       "personal": null
+      },
+      {
+       "tp": "L-44",
+       "v": 345.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -3.1,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 367.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 3.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 359.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.8,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 396.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 11.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 345.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -3.1,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 185.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -48.0,
+       "personal": "amber"
+      }
+     ]
+    },
+    "C004": {
+     "baseline": 239.0,
+     "points": [
+      {
+       "tp": "L-92",
+       "v": 239.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-44",
+       "v": 227.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -5.0,
+       "personal": "green"
+      },
+      {
+       "tp": "L-3",
+       "v": 295.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 23.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+1",
+       "v": 240.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 0.4,
+       "personal": "green"
+      },
+      {
+       "tp": "R+45",
+       "v": 281.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 17.6,
+       "personal": "green"
+      },
+      {
+       "tp": "R+82",
+       "v": 198.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": -17.2,
+       "personal": "green"
+      },
+      {
+       "tp": "R+194",
+       "v": 256.0,
+       "lo": 140.0,
+       "hi": 400.0,
+       "lab": "normal",
+       "dev_pct": 7.1,
+       "personal": "green"
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "data_quality": [
+  {
+   "crew": "C003",
+   "timepoint": "L-92",
+   "panel": "CBC",
+   "analyte": "Neutrophils",
+   "value": 10.1,
+   "unit": "cells/\u00b5L"
+  },
+  {
+   "crew": "C003",
+   "timepoint": "L-92",
+   "panel": "CBC",
+   "analyte": "Platelets",
+   "value": 12.9,
+   "unit": "10\u00b3/\u00b5L"
+  }
+ ],
+ "summary": {
+  "n_values": 386,
+  "lab_flags": 19,
+  "personal_flags": 16,
+  "personal_only": 6,
+  "lab_only": 9
+ },
+ "crew_wide": [
+  {
+   "analyte": "Glucose",
+   "timepoint": "R+45",
+   "crew": [
+    "C002",
+    "C003",
+    "C004"
+   ],
+   "values": [
+    44.0,
+    36.0,
+    43.0
+   ]
+  },
+  {
+   "analyte": "Urea nitrogen (BUN)",
+   "timepoint": "R+194",
+   "crew": [
+    "C001",
+    "C003",
+    "C004"
+   ],
+   "values": [
+    28.0,
+    28.0,
+    27.0
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "OSD-569",
+   "title": "SpaceX Inspiration4 \u2013 Complete Blood Count (LSDS-7)",
+   "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-569",
+   "file": "LSDS-7_Complete_Blood_Count_CBC_TRANSFORMED.csv"
+  },
+  {
+   "id": "OSD-575",
+   "title": "SpaceX Inspiration4 \u2013 Comprehensive Metabolic Panel (LSDS-8)",
+   "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+   "file": "LSDS-8_Comprehensive_Metabolic_Panel_CMP_TRANSFORMED.csv"
+  }
+ ]
+}
