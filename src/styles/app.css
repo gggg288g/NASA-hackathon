@@ -108,6 +108,15 @@ select option:checked { background: var(--accent); color: #fff; }
 .dots { display: grid; grid-template-columns: repeat(14, 1fr); gap: 2px; }
 .dots i { height: 6px; border-radius: 3px; background: var(--none); }
 .dots i.on { background: var(--ok); }
+.hyd-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; }
+.hyd-top .big { font-family: var(--display); font-size: 28px; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+.hyd-top .big small { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.hydbar { height: 10px; border-radius: 5px; background: var(--none); overflow: hidden; margin: 10px 0 6px; }
+.hydbar i { display: block; height: 100%; border-radius: 5px; background: var(--accent); transition: width .3s var(--ease); }
+.hyd-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.hyd-custom { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.hyd-custom input { flex: 1 1 140px; min-width: 0; }
+.btn:disabled { opacity: .4; cursor: default; }
 .sysl { display: grid; }
 .sysl div { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--line); }
 .sysl div:last-child { border-bottom: 0; }

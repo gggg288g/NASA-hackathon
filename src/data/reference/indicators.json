@@ -584,6 +584,43 @@
     "https://tucson.com/news/article_a0681051-6010-51bc-a0d6-9dc8217ad6d9.html"
    ]
   },
+   {
+  "id": "fluid_intake_ml",
+  "name": "Fluid intake",
+  "unit": "ml",
+  "plain_meaning": "Everything you drank today: water, juice, coffee and rehydrated drinks. Food adds more, but this is the part you can easily track.",
+  "how_to_measure": "Log each drink pouch or bottle as you finish it (quick-add buttons on the Today screen), or enter the day's total in the evening check-in.",
+  "frequency": "daily",
+  "body_system": "metabolic",
+  "absolute_tiers": {
+   "green": [[2000, 99999]],
+   "amber": [[1500, 2000]],
+   "red": [[0, 1500]]
+  },
+  "baseline_deviation": {
+   "metric": "rolling_avg_below",
+   "window_days": 3,
+   "amber": 1900,
+   "red": 1600
+  },
+  "spaceflight_note": "NASA's exploration nutrition requirements call for fluid (food plus drinks) of 32 ml/kg body mass, and no less than 2500 ml/day for men and 2100 ml/day for women. Shuttle crews averaged about 2285 ml/day, and thirst is blunted in flight. Thresholds here are demo values for a drinks-only log, not NASA medical standards.",
+  "actions": {
+   "amber": [
+    "Drink a pouch (250 ml) now and another with each meal",
+    "Set a reminder every 2 hours",
+    "Check urine colour: dark means drink more"
+   ],
+   "red": [
+    "Drink 500 ml now, then 250 ml every 30 minutes",
+    "Tell the crew medical officer if you feel dizzy, have a headache or very dark urine",
+    "Review the workload or drink-break schedule with the commander"
+   ]
+  },
+  "sources": [
+   "https://ntrs.nasa.gov/api/citations/20205008306/downloads/JSC67378%20Expl%20Nutr%20Reqs%20042020.pdf",
+   "https://ntrs.nasa.gov/citations/20000020625"
+  ]
+ },
   {
    "id": "vision_check",
    "name": "Eye check (Amsler grid)",
