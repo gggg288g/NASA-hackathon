@@ -75,7 +75,7 @@ Datasets: NASA Open Science Data Repository (Inspiration4 OSD-569 and OSD-575).
 
 **Solution Development**
 1. Data Validation: We started by testing our concept against real spaceflight data. Using Python, we looked back at Inspiration4 blood data (4 crew) and showed that our "personal baseline" method flagged 4 post-flight changes that standard Earth ranges missed.
-2. UI & Engine Build: We built a custom SVG body map and created three distinct interfaces (Astronaut, Self-check, Medical Officer) to manage cognitive load. Behind the scenes, we coded a fully offline triage engine. Readings outside Earth clinical ranges alert straight away; a reading that is only unusual for that astronaut must repeat on 2 of 3 readings before it becomes an alert, to cut false alarms.
+2. UI & Engine Build: We built a custom SVG body map and created three distinct interfaces (Astronaut, Self-check, Medical Officer) to manage cognitive load. Behind the scenes, we coded a fully offline triage engine. Readings outside Earth clinical ranges alert straight away.
 3. Simulation Testing: To test our logic, we scripted a 90-day synthetic mission for a 3-person crew, planting subtle health events (like skipped exercise or temperature spikes) to ensure our cross-system warnings and 2 KB flight surgeon reports triggered correctly under simulated Mars communication delays.
 
 ## NASA data used
