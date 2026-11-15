@@ -175,8 +175,6 @@ dialog[open] { opacity: 1; transform: none; }
 @starting-style { dialog[open] { opacity: 0; transform: scale(.96) translateY(10px); } }
 dialog::backdrop { background: rgba(0,0,0,.32); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 dialog h3 { font-weight: 700; letter-spacing: -.02em; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.form-grid input { width: 100%; }
 pre.report { background: var(--panel-2); border-radius: 12px; padding: 12px; white-space: pre-wrap; font-family: var(--mono); font-size: 12px; max-height: 300px; overflow: auto; }
 .row { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; align-items: center; }
 
@@ -223,6 +221,13 @@ svg.amsler { width: 100%; max-width: 240px; border-radius: 12px; }
 .symgrid button { background: var(--fill); border: 0; border-radius: 14px; padding: 14px 10px; font-size: 15px; font-weight: 500; cursor: pointer; text-align: center; transition: transform .1s ease-out, background .15s; }
 .symgrid button:active { transform: scale(.97); }
 .symgrid button[aria-pressed="true"] { background: var(--crit); color: #fff; }
+.describe { display: grid; gap: 6px; margin-top: 12px; }
+.describe textarea { width: 100%; resize: vertical; background: var(--fill); color: var(--ink); border: 0; border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 15px; }
+.care { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 8px; }
+.care h4 { font-size: 17px; font-weight: 700; }
+.care ol { margin: 4px 0; }
+.thinking { animation: pulse 1.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .thinking { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .ib.speaking svg { animation: none; } }
 .who { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
 .redflag { background: var(--crit); color: #fff; border-radius: 14px; padding: 12px 14px; font-weight: 600; }
@@ -278,7 +283,7 @@ svg.amsler { width: 100%; max-width: 240px; border-radius: 12px; }
 .why ol, .why ul { margin: 0; padding-left: 18px; }
 
 @media (max-width: 1100px) { .main { grid-template-columns: 260px minmax(0,1fr); } #triage { grid-column: 1 / -1; } }
-@media (max-width: 760px) { .main, .crew, .cols2, .form-grid { grid-template-columns: 1fr; } .controls { margin-left: 0; } .habits { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .main, .crew, .cols2 { grid-template-columns: 1fr; } .controls { margin-left: 0; } .habits { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { *, dialog { transition: opacity .2s ease !important; } dialog, .btn:active, .seg button:active { transform: none !important; } }
 @media (prefers-reduced-transparency: reduce) { header.top { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; } dialog::backdrop { backdrop-filter: none; -webkit-backdrop-filter: none; } }
 @media (prefers-contrast: more) { .panel, .hero, .daybar, .crewcard, .disc.card { outline: 1px solid var(--ink); } :root { --muted: var(--ink); } }
@@ -293,12 +298,27 @@ body:not([data-mode="astro"]):not([data-mode="sc"]) .me-field { display: none; }
 #body .hint { text-align: center; color: var(--muted); font-size: 12px; margin: 0; }
 #astro .part { cursor: pointer; transform-box: fill-box; transition: transform .55s cubic-bezier(.34,1.36,.64,1), opacity .35s var(--ease); }
 #astro .part:hover .shell { filter: brightness(1.03); }
+/* hover/focus: the suit part grows a little. Parts that open the same area grow together (both chest halves; arms + legs).
+   The inner .grow group carries this so it never fights the part's own open/close transform. */
+#astro .part .grow { transform-box: fill-box; transform-origin: center; transition: transform .3s var(--ease); }
+@media (prefers-reduced-motion: no-preference) {
+  #astro:has(.part[data-open="head"]:is(:hover, :focus-visible)) .part[data-open="head"] .grow,
+  #astro:has(.part[data-open="chest"]:is(:hover, :focus-visible)) .part[data-open="chest"] .grow,
+  #astro:has(.part[data-open="limbs"]:is(:hover, :focus-visible)) .part[data-open="limbs"] .grow { transform: scale(1.04); }
+}
 #astro .part:focus, #astro .organ:focus { outline: none; }
 #astro .part:focus-visible .shell { stroke: var(--accent); stroke-width: 3; }
-#astro .organ { cursor: pointer; transition: filter .15s, opacity .3s; }
-#astro .organ:hover { filter: brightness(1.08); }
+#astro .organ { cursor: pointer; transform-box: fill-box; transform-origin: center; transition: filter .2s, opacity .2s, transform .25s var(--ease); }
 #astro .organ.sel { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ink) 35%, transparent)); }
-#astro .organ-lbl { font: 600 10px var(--body); fill: var(--muted); pointer-events: none; opacity: 0; transition: opacity .3s .15s; }
+/* hover/focus: the part you're about to pick glows in its status colour and lifts; the rest step back.
+   Arms and legs are one system (bones & muscles), so hovering either lights up both. */
+#astro:has(.organ:hover, .organ:focus-visible) .organ { opacity: .4; }
+#astro:has(.organ:hover, .organ:focus-visible) .organ:is(:hover, :focus-visible),
+#astro:has([data-sys="musculoskeletal"]:is(:hover, :focus-visible)) .organ[data-sys="musculoskeletal"] { opacity: 1; filter: brightness(1.12) drop-shadow(0 0 2px var(--t)) drop-shadow(0 0 8px var(--t)); }
+@media (prefers-reduced-motion: no-preference) {
+  #astro:has(.organ:hover, .organ:focus-visible) .organ:is(:hover, :focus-visible),
+  #astro:has([data-sys="musculoskeletal"]:is(:hover, :focus-visible)) .organ[data-sys="musculoskeletal"] { transform: scale(1.05); }
+}
 #astro .dot { transition: opacity .25s; }
 #astro .dot.pulse { animation: apulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes apulse { 50% { transform: scale(1.35); opacity: .55; } }
@@ -308,7 +328,6 @@ body:not([data-mode="astro"]):not([data-mode="sc"]) .me-field { display: none; }
 #astro.open-chest #pack { opacity: .25; }
 #astro.open-limbs #suitLegs { transform: translate(0, 60px); opacity: 0; pointer-events: none; }
 #astro.open-limbs #suitArms { transform: scale(1.08); opacity: 0; pointer-events: none; }
-#astro.open-head .lbl-head, #astro.open-chest .lbl-chest, #astro.open-limbs .lbl-limbs { opacity: 1; }
 #astro.open-head .dot-head, #astro.open-chest .dot-chest, #astro.open-limbs .dot-limbs { opacity: 0; }
 #astro #helmet { transform-origin: 180px 92px; }
 @media (prefers-reduced-motion: reduce) {

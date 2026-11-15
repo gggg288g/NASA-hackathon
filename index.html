@@ -16,7 +16,6 @@
   <div class="controls">
     <div class="field me-field"><label for="me">I am</label><select id="me"></select></div>
     <div class="field"><label for="env">Environment</label><select id="env"></select></div>
-    <button class="btn mo-only" id="btn-checkin" type="button">Quick entry</button>
     <button class="btn danger" id="btn-emg" type="button">Emergency</button>
   </div>
 </div></header>
@@ -59,13 +58,13 @@
         <!-- ===== BODY (underneath) ===== -->
         <g id="body">
           <!-- legs with bones -->
-          <g class="organ" data-sys="musculoskeletal" id="legsInner">
+          <g class="organ" data-sys="musculoskeletal" id="legsInner" role="button" aria-label="Legs: bones">
             <path d="M122 330 Q118 450 128 560 L168 560 Q172 450 176 340 Z" fill="url(#gInner)"/>
             <path d="M238 330 Q242 450 232 560 L192 560 Q188 450 184 340 Z" fill="url(#gInner)"/>
             <g class="bones"><line x1="150" y1="345" x2="148" y2="434" stroke="var(--bo)" stroke-width="13" stroke-linecap="round"/><circle cx="150" cy="345" r="8.5" fill="var(--bo)"/><circle cx="148" cy="434" r="8.5" fill="var(--bo)"/><line x1="158" y1="460" x2="157" y2="542" stroke="var(--bo)" stroke-width="7" stroke-linecap="round"/><circle cx="158" cy="460" r="4.0" fill="var(--bo)"/><circle cx="157" cy="542" r="4.0" fill="var(--bo)"/><line x1="147" y1="458" x2="146" y2="546" stroke="var(--bo)" stroke-width="12" stroke-linecap="round"/><circle cx="147" cy="458" r="7.5" fill="var(--bo)"/><circle cx="146" cy="546" r="7.5" fill="var(--bo)"/><line x1="210" y1="345" x2="212" y2="434" stroke="var(--bo)" stroke-width="13" stroke-linecap="round"/><circle cx="210" cy="345" r="8.5" fill="var(--bo)"/><circle cx="212" cy="434" r="8.5" fill="var(--bo)"/><line x1="202" y1="460" x2="203" y2="542" stroke="var(--bo)" stroke-width="7" stroke-linecap="round"/><circle cx="202" cy="460" r="4.0" fill="var(--bo)"/><circle cx="203" cy="542" r="4.0" fill="var(--bo)"/><line x1="213" y1="458" x2="214" y2="546" stroke="var(--bo)" stroke-width="12" stroke-linecap="round"/><circle cx="213" cy="458" r="7.5" fill="var(--bo)"/><circle cx="214" cy="546" r="7.5" fill="var(--bo)"/><line x1="150" y1="345" x2="148" y2="434" stroke="var(--bone)" stroke-width="10" stroke-linecap="round"/><circle cx="150" cy="345" r="7" fill="var(--bone)"/><circle cx="148" cy="434" r="7" fill="var(--bone)"/><line x1="158" y1="460" x2="157" y2="542" stroke="var(--bone)" stroke-width="4" stroke-linecap="round"/><circle cx="158" cy="460" r="2.5" fill="var(--bone)"/><circle cx="157" cy="542" r="2.5" fill="var(--bone)"/><line x1="147" y1="458" x2="146" y2="546" stroke="var(--bone)" stroke-width="9" stroke-linecap="round"/><circle cx="147" cy="458" r="6" fill="var(--bone)"/><circle cx="146" cy="546" r="6" fill="var(--bone)"/><line x1="210" y1="345" x2="212" y2="434" stroke="var(--bone)" stroke-width="10" stroke-linecap="round"/><circle cx="210" cy="345" r="7" fill="var(--bone)"/><circle cx="212" cy="434" r="7" fill="var(--bone)"/><line x1="202" y1="460" x2="203" y2="542" stroke="var(--bone)" stroke-width="4" stroke-linecap="round"/><circle cx="202" cy="460" r="2.5" fill="var(--bone)"/><circle cx="203" cy="542" r="2.5" fill="var(--bone)"/><line x1="213" y1="458" x2="214" y2="546" stroke="var(--bone)" stroke-width="9" stroke-linecap="round"/><circle cx="213" cy="458" r="6" fill="var(--bone)"/><circle cx="214" cy="546" r="6" fill="var(--bone)"/><circle cx="149" cy="446" r="7" fill="var(--bo)"/><circle cx="149" cy="446" r="5.5" fill="var(--bone)"/><circle cx="211" cy="446" r="7" fill="var(--bo)"/><circle cx="211" cy="446" r="5.5" fill="var(--bone)"/></g>
           </g>
           <!-- arms with bones -->
-          <g class="organ" data-sys="musculoskeletal" id="armsInner">
+          <g class="organ" data-sys="musculoskeletal" id="armsInner" role="button" aria-label="Arms: bones">
             <path d="M84 168 Q60 230 58 318 L82 320 Q90 240 108 190 Z" fill="url(#gInner)"/>
             <path d="M276 168 Q300 230 302 318 L278 320 Q270 240 252 190 Z" fill="url(#gInner)"/>
             <g class="bones"><line x1="90" y1="188" x2="80" y2="250" stroke="var(--bo)" stroke-width="10" stroke-linecap="round"/><circle cx="90" cy="188" r="6.5" fill="var(--bo)"/><circle cx="80" cy="250" r="6.5" fill="var(--bo)"/><line x1="78" y1="260" x2="69" y2="308" stroke="var(--bo)" stroke-width="6.5" stroke-linecap="round"/><circle cx="78" cy="260" r="4.0" fill="var(--bo)"/><circle cx="69" cy="308" r="4.0" fill="var(--bo)"/><line x1="85" y1="260" x2="76" y2="308" stroke="var(--bo)" stroke-width="6.5" stroke-linecap="round"/><circle cx="85" cy="260" r="4.0" fill="var(--bo)"/><circle cx="76" cy="308" r="4.0" fill="var(--bo)"/><line x1="270" y1="188" x2="280" y2="250" stroke="var(--bo)" stroke-width="10" stroke-linecap="round"/><circle cx="270" cy="188" r="6.5" fill="var(--bo)"/><circle cx="280" cy="250" r="6.5" fill="var(--bo)"/><line x1="282" y1="260" x2="291" y2="308" stroke="var(--bo)" stroke-width="6.5" stroke-linecap="round"/><circle cx="282" cy="260" r="4.0" fill="var(--bo)"/><circle cx="291" cy="308" r="4.0" fill="var(--bo)"/><line x1="275" y1="260" x2="284" y2="308" stroke="var(--bo)" stroke-width="6.5" stroke-linecap="round"/><circle cx="275" cy="260" r="4.0" fill="var(--bo)"/><circle cx="284" cy="308" r="4.0" fill="var(--bo)"/><line x1="90" y1="188" x2="80" y2="250" stroke="var(--bone)" stroke-width="7" stroke-linecap="round"/><circle cx="90" cy="188" r="5" fill="var(--bone)"/><circle cx="80" cy="250" r="5" fill="var(--bone)"/><line x1="78" y1="260" x2="69" y2="308" stroke="var(--bone)" stroke-width="3.5" stroke-linecap="round"/><circle cx="78" cy="260" r="2.5" fill="var(--bone)"/><circle cx="69" cy="308" r="2.5" fill="var(--bone)"/><line x1="85" y1="260" x2="76" y2="308" stroke="var(--bone)" stroke-width="3.5" stroke-linecap="round"/><circle cx="85" cy="260" r="2.5" fill="var(--bone)"/><circle cx="76" cy="308" r="2.5" fill="var(--bone)"/><line x1="270" y1="188" x2="280" y2="250" stroke="var(--bone)" stroke-width="7" stroke-linecap="round"/><circle cx="270" cy="188" r="5" fill="var(--bone)"/><circle cx="280" cy="250" r="5" fill="var(--bone)"/><line x1="282" y1="260" x2="291" y2="308" stroke="var(--bone)" stroke-width="3.5" stroke-linecap="round"/><circle cx="282" cy="260" r="2.5" fill="var(--bone)"/><circle cx="291" cy="308" r="2.5" fill="var(--bone)"/><line x1="275" y1="260" x2="284" y2="308" stroke="var(--bone)" stroke-width="3.5" stroke-linecap="round"/><circle cx="275" cy="260" r="2.5" fill="var(--bone)"/><circle cx="284" cy="308" r="2.5" fill="var(--bone)"/></g>
@@ -73,60 +72,54 @@
           <!-- torso garment -->
           <path d="M100 160 Q180 140 260 160 L268 300 Q250 340 180 342 Q110 340 92 300 Z" fill="url(#gInner)"/>
           <!-- organs -->
-          <g class="organ" data-sys="respiratory" id="lungs">
+          <g class="organ" data-sys="respiratory" id="lungs" role="button" aria-label="Lungs">
             <path d="M150 178 Q122 186 122 236 Q124 270 150 268 Q164 262 164 230 L164 188 Q162 176 150 178 Z" fill="var(--t)" opacity=".78"/>
             <path d="M210 178 Q238 186 238 236 Q236 270 210 268 Q196 262 196 230 L196 188 Q198 176 210 178 Z" fill="var(--t)" opacity=".78"/>
           </g>
-          <path class="organ" data-sys="cardiovascular" id="heart" fill="var(--t)" d="M186 214 C186 204 200 202 202 212 C204 202 218 204 218 214 C218 228 202 238 202 246 C202 238 186 228 186 214 Z"/>
-          <ellipse class="organ" data-sys="metabolic" id="gut" cx="180" cy="298" rx="44" ry="22" fill="var(--t)" opacity=".85"/>
-          <text class="organ-lbl lbl-chest" x="136" y="172" text-anchor="middle">Lungs</text>
-          <text class="organ-lbl lbl-chest" x="226" y="250" text-anchor="start">Heart</text>
-          <text class="organ-lbl lbl-chest" x="230" y="302">Gut</text>
-          <text class="organ-lbl lbl-limbs" x="250" y="450">Bones</text>
+          <path class="organ" data-sys="cardiovascular" id="heart" role="button" aria-label="Heart" fill="var(--t)" d="M186 214 C186 204 200 202 202 212 C204 202 218 204 218 214 C218 228 202 238 202 246 C202 238 186 228 186 214 Z"/>
+          <ellipse class="organ" data-sys="metabolic" id="gut" role="button" aria-label="Gut" cx="180" cy="298" rx="44" ry="22" fill="var(--t)" opacity=".85"/>
           <!-- neck + head -->
           <g fill="var(--bone-lo)"><rect x="171" y="132" width="18" height="6" rx="3"/><rect x="170" y="140" width="20" height="6" rx="3"/><rect x="170" y="148" width="20" height="6" rx="3"/></g>
           <path d="M146 90 Q144 46 180 45 Q216 46 214 90 Q214 103 206 109 L204 121 Q200 132 180 134 Q160 132 156 121 L154 109 Q146 103 146 90 Z" fill="url(#gBone)" stroke="var(--bone-lo)" stroke-width="1"/>
-          <g class="organ" data-sys="behavioral" id="head">
+          <g class="organ" data-sys="behavioral" id="head" role="button" aria-label="Mind">
             <path d="M153 80 Q151 53 180 51 Q209 53 207 80 Q199 73 190 77 Q180 71 170 77 Q161 73 153 80 Z" fill="var(--t)" opacity=".8"/>
             <path d="M163 62 Q170 58 172 66 M188 60 Q194 56 197 64 M178 54 Q182 62 176 70 M160 72 Q166 68 168 74 M192 70 Q198 66 201 72" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".7"/>
           </g>
           <path d="M180 101 L174.5 112 Q180 115.5 185.5 112 Z" fill="var(--socket)"/>
           <rect x="165" y="118" width="30" height="8" rx="2.5" fill="var(--bone)" stroke="var(--bone-lo)" stroke-width="1"/>
           <path d="M171 118 V126 M177 118 V126 M183 118 V126 M189 118 V126" stroke="var(--bone-lo)" stroke-width="1"/>
-          <g class="organ" data-sys="neuro_ocular" id="eyes">
+          <g class="organ" data-sys="neuro_ocular" id="eyes" role="button" aria-label="Eyes">
             <ellipse cx="166" cy="93" rx="10" ry="8.5" fill="var(--socket)"/><circle cx="166" cy="93" r="3.6" fill="var(--t)"/>
             <ellipse cx="194" cy="93" rx="10" ry="8.5" fill="var(--socket)"/><circle cx="194" cy="93" r="3.6" fill="var(--t)"/>
           </g>
-          <text class="organ-lbl lbl-head" x="226" y="70">Mind</text>
-          <text class="organ-lbl lbl-head" x="226" y="100">Eyes</text>
         </g>
 
         <!-- ===== SUIT (on top) ===== -->
-        <g id="pack" style="transition: opacity .35s"><rect x="96" y="150" width="168" height="168" rx="22" fill="var(--suit-edge)" opacity=".55"/></g>
+        <g id="pack" style="transition: opacity .35s; pointer-events: none"><rect x="96" y="150" width="168" height="168" rx="22" fill="var(--suit-edge)" opacity=".55"/></g>
 
-        <g class="part" id="suitLegs" data-open="limbs" filter="url(#soft)">
+        <g class="part" id="suitLegs" data-open="limbs" filter="url(#soft)"><g class="grow">
           <path class="shell" d="M116 326 Q110 450 120 566 L174 566 Q178 450 180 336 Z" fill="url(#gSuit)" stroke="var(--suit-edge)" stroke-width="1"/>
           <path class="shell" d="M244 326 Q250 450 240 566 L186 566 Q182 450 180 336 Z" fill="url(#gSuit)" stroke="var(--suit-edge)" stroke-width="1"/>
           <rect x="118" y="436" width="56" height="16" rx="8" fill="var(--ring)"/><rect x="186" y="436" width="56" height="16" rx="8" fill="var(--ring)"/>
           <path d="M110 558 Q110 586 128 590 L176 590 Q182 584 178 558 Z" fill="#6b7080"/><path d="M250 558 Q250 586 232 590 L184 590 Q178 584 182 558 Z" fill="#6b7080"/>
           <rect x="124" y="372" width="30" height="20" rx="4" fill="var(--suit-lo)" opacity=".8"/>
-          <circle class="dot dot-limbs" cx="232" cy="380" r="6" stroke="var(--panel)" stroke-width="2"/>
+          <circle class="dot dot-limbs" cx="232" cy="380" r="6" stroke="var(--panel)" stroke-width="2"/></g>
         </g>
 
-        <g class="part" id="suitArms" data-open="limbs" filter="url(#soft)" style="transform-origin:180px 240px">
+        <g class="part" id="suitArms" data-open="limbs" filter="url(#soft)" style="transform-origin:180px 240px"><g class="grow">
           <path class="shell" d="M80 160 Q48 226 50 318 L88 322 Q94 246 112 186 Z" fill="url(#gSuit)" stroke="var(--suit-edge)" stroke-width="1"/>
           <path class="shell" d="M280 160 Q312 226 310 318 L272 322 Q266 246 248 186 Z" fill="url(#gSuit)" stroke="var(--suit-edge)" stroke-width="1"/>
           <rect x="52" y="238" width="44" height="13" rx="6.5" fill="var(--ring)" transform="rotate(8 74 244)"/>
           <rect x="264" y="238" width="44" height="13" rx="6.5" fill="var(--ring)" transform="rotate(-8 286 244)"/>
           <rect x="46" y="312" width="46" height="12" rx="6" fill="var(--ring)"/><rect x="268" y="312" width="46" height="12" rx="6" fill="var(--ring)"/>
-          <path d="M48 322 Q44 354 66 360 Q90 360 92 322 Z" fill="#6b7080"/><path d="M312 322 Q316 354 294 360 Q270 360 268 322 Z" fill="#6b7080"/>
+          <path d="M48 322 Q44 354 66 360 Q90 360 92 322 Z" fill="#6b7080"/><path d="M312 322 Q316 354 294 360 Q270 360 268 322 Z" fill="#6b7080"/></g>
         </g>
 
-        <g class="part" id="suitL" data-open="chest" filter="url(#soft)" style="transform-origin:120px 240px">
+        <g class="part" id="suitL" data-open="chest" filter="url(#soft)" style="transform-origin:120px 240px"><g class="grow">
           <path class="shell" d="M180 146 Q128 146 96 160 L88 302 Q104 340 180 344 Z" fill="url(#gSuit)" stroke="var(--suit-edge)" stroke-width="1"/>
-          <rect x="94" y="322" width="86" height="18" rx="6" fill="var(--ring)"/>
+          <rect x="94" y="322" width="86" height="18" rx="6" fill="var(--ring)"/></g>
         </g>
-        <g class="part" id="suitR" data-open="chest" filter="url(#soft)" style="transform-origin:240px 240px">
+        <g class="part" id="suitR" data-open="chest" filter="url(#soft)" style="transform-origin:240px 240px"><g class="grow">
           <path class="shell" d="M180 146 Q232 146 264 160 L272 302 Q256 340 180 344 Z" fill="url(#gSuit)" stroke="var(--suit-edge)" stroke-width="1"/>
           <rect x="180" y="322" width="86" height="18" rx="6" fill="var(--ring)"/>
           <!-- chest display module -->
@@ -134,16 +127,16 @@
           <rect x="158" y="220" width="30" height="12" rx="3" fill="#2c3340"/>
           <circle cx="198" cy="226" r="4" fill="#9aa0ad"/><circle cx="162" cy="242" r="3.5" fill="#9aa0ad"/><circle cx="174" cy="242" r="3.5" fill="#9aa0ad"/><circle cx="186" cy="242" r="3.5" fill="#9aa0ad"/>
           <circle class="dot dot-chest" cx="198" cy="242" r="6" stroke="#e6e8ee" stroke-width="2"/>
-          <rect x="114" y="176" width="34" height="9" rx="3" fill="var(--suit-lo)"/>
+          <rect x="114" y="176" width="34" height="9" rx="3" fill="var(--suit-lo)"/></g>
         </g>
 
-        <g class="part" id="helmet" data-open="head" filter="url(#soft)">
+        <g class="part" id="helmet" data-open="head" filter="url(#soft)"><g class="grow">
           <ellipse cx="180" cy="152" rx="56" ry="14" fill="var(--ring)"/>
           <circle class="shell" cx="180" cy="92" r="64" fill="url(#gHelm)" stroke="var(--suit-edge)" stroke-width="1"/>
           <path d="M136 92 Q136 52 180 50 Q224 52 224 92 Q224 128 180 132 Q136 128 136 92 Z" fill="url(#gVisor)"/>
           <path d="M150 70 Q162 58 182 58" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".55"/>
           <circle cx="210" cy="112" r="3" fill="#fff" opacity=".35"/>
-          <circle class="dot dot-head" cx="232" cy="48" r="7" stroke="var(--panel)" stroke-width="2"/>
+          <circle class="dot dot-head" cx="232" cy="48" r="7" stroke="var(--panel)" stroke-width="2"/></g>
         </g>
       </svg>
 </div>
@@ -188,19 +181,6 @@
   <div id="sc"><div class="tabs" id="tabs" role="tablist" aria-label="Body systems"></div><div id="panels"></div></div>
   <p class="note">Self-check, Amsler grid, PHQ-9 and NASA links by our teammate (Astro Health Check). Scoring is the team's proposal. Not a medical device.</p>
 </div>
-
-<dialog id="dlg-checkin" aria-labelledby="ci-title">
-  <form id="ci-form" method="dialog">
-    <h3 id="ci-title" style="font-size:22px;margin-bottom:4px">Daily check-in</h3>
-    <p class="note" id="ci-sub" style="margin-top:0"></p>
-    <div class="form-grid" id="ci-fields"></div>
-    <div class="field" style="margin-top:10px"><label for="ci-symptoms">Symptoms (comma separated, optional)</label><input type="text" id="ci-symptoms" placeholder="e.g. headache, rash"></div>
-    <div class="row" style="margin-top:14px">
-      <button class="btn" type="button" id="ci-cancel">Cancel</button>
-      <button class="btn primary" type="submit" id="ci-submit">Save and assess</button>
-    </div>
-  </form>
-</dialog>
 
 <dialog id="dlg-wiz" aria-labelledby="wiz-title">
   <div class="wiz-prog" id="wiz-prog"></div>
