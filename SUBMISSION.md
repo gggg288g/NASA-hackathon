@@ -57,6 +57,27 @@ On a Mars mission the flight surgeon can be up to 22 minutes away each way, so t
 - A return-to-gravity readiness score.
 - The same app for submarines, Antarctic stations and remote clinics, by swapping the environment profile.
 
+**The Approach**
+
+Our approach was driven by a simple reality: Earth-based health metrics don't always work in space. With Mars communication delays up to 44 minutes round-trip, the crew needs an autonomous, offline tool.
+Instead of treating vitals in isolation, we built a system based on three pillars:
+Personal Baselines: Comparing readings against the astronaut's own recent normal, not just standard clinical ranges.
+Cross-System Warnings: Linking multiple subtle signals (e.g., low fluids + bone loss) to catch space-specific hazards early.
+Actionable Autonomy: Providing offline, step-by-step protocols and compressing status updates into tiny (2 KB) packets for Mission Control.
+
+**Tools & Technologies**
+
+We prioritized a lightweight, offline-first stack to ensure reliability in deep space:
+Frontend: HTML5, CSS3, and Vanilla JavaScript (built with Vite). No heavy frameworks, ensuring fast, entirely client-side operation.
+Interactive UI: Native SVG. The interactive "Digital Twin" body map was built from scratch to allow dynamic visual health tracking without external libraries.
+Data Processing: Python was used to ingest NASA datasets and generate our synthetic mission.
+Datasets: NASA Open Science Data Repository (Inspiration4 OSD-569 and OSD-575).
+
+**Solution Development**
+1. Data Validation: We started by proving our concept against real spaceflight data. Using Python, we analyzed Inspiration4 blood data and proved that our "personal baseline" method successfully flagged 4 physiological changes that standard Earth ranges missed.
+2. UI & Engine Build: We built a custom SVG body map and created three distinct interfaces (Astronaut, Self-check, Medical Officer) to manage cognitive load. Behind the scenes, we coded a 100% offline triage engine that requires 2 out of 3 consecutive abnormal readings before triggering an alert, heavily reducing false alarms.
+3. Simulation Testing: To test our logic, we scripted a 90-day synthetic mission for a 3-person crew, planting subtle health events (like skipped exercise or temperature spikes) to ensure our cross-system warnings and 2 KB flight surgeon reports triggered correctly under simulated Mars communication delays.
+
 ## NASA data used
 
 - OSD-569, SpaceX Inspiration4, Complete Blood Count (LSDS-7): https://osdr.nasa.gov/bio/repo/data/studies/OSD-569
