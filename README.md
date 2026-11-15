@@ -149,6 +149,10 @@ python scripts/triage_reference.py      # prints the planted events the triage c
 - **Jordan Ong**: app, triage method, mission data, NASA OSDR processing, body map, emergency mode.
 - **Teammate**: Self-check content and checks (SANS, orthostatic, infection, sleep, isolation, bone and muscle), Amsler grid, PHQ-9, NASA research references.
 
+## Use of AI (Super Intelligence) tools
+
+As Space Apps rules require, we acknowledge that AI coding assistants (Claude) helped write, review and test parts of this code and documentation under our team's direction. Commits made with AI help carry a `Co-Authored-By: Claude` line in the git history. The optional Emergency talk-through calls an LLM (Gemini, with Claude as a fallback) only to phrase our own rule-based guidance; everything else runs as fixed rules, offline. No images or video were generated with AI.
+
 ## Disclaimer
 
 This is a hackathon prototype for decision support. It is not a medical device and does not replace a flight surgeon.

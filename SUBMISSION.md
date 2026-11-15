@@ -14,6 +14,14 @@ Crew Health Monitor
 
 On a Mars mission the flight surgeon can be up to 22 minutes away each way, so the crew has to notice problems early and act on their own. Crew Health Monitor compares every astronaut with **their own normal**, not just Earth ranges, links signals across the body into plain-language early warnings ("short sleep plus stress: watch for infection"), and guides the crew through step-by-step protocols that change with the comms delay. It works offline, keeps mood data private by default, and its personal-baseline method was tested on real NASA Inspiration4 blood data. There it flagged 4 changes that normal clinical ranges missed.
 
+## Link to Project Demo
+
+[Paste the public link to the slide deck (7 slides max) or video (30 s max). Test it in a private browser window first.]
+
+## Link to Final Project
+
+https://github.com/gggg288g/NASA-hackathon
+
 ## Detailed project description
 
 **The problem.** Long missions expose crews to microgravity, radiation, isolation and a closed environment. Many changes in the body are silent at first (bone loss, eye changes, slowly rising blood pressure), and spaceflight shifts what "normal" is (core temperature runs about 1 °C warmer, blood pressure about 8–10 mmHg lower). Earth reference ranges alone miss early drift, and with a 3–22 minute delay each way to Mars, waiting for ground is not always an option.
@@ -85,9 +93,25 @@ Datasets: NASA Open Science Data Repository (Inspiration4 OSD-569 and OSD-575).
 - NASA Human Research Program, five hazards of spaceflight: https://www.nasa.gov/hrp/hazards/
 - NASA OCHMO technical briefs (bone loss, CO₂, radiation) and NTRS papers on SANS, renal stones and exploration nutrition (linked in the app next to each check)
 
-## Use of AI
+## Space Agency Partner Data and Other References
 
-We used AI coding assistants (Claude) to help write and review code, analyse our design and draft text. The optional Emergency talk-through uses an LLM only to phrase guidance from our own rule-based results and protocols. It is told never to diagnose or suggest drugs or doses. All triage, early warnings and protocols run as fixed rules and work offline without AI.
+- Canadian Space Agency (CSA), cardiovascular research on the ISS (used for the heart and blood vessel content): https://www.asc-csa.gc.ca/eng/sciences/cciss.asp
+- NASA exploration nutrition requirements (fluid target, 32 ml/kg): https://ntrs.nasa.gov/api/citations/20205008306/downloads/JSC67378%20Expl%20Nutr%20Reqs%20042020.pdf
+- Clinical guidelines: ACC/AHA blood pressure categories, ADA hypoglycaemia 15-15 rule, PHQ-9 (Kroenke et al.), Amsler grid
+- Published spaceflight research cited in the app next to each check (PMC, NTRS, EyeWiki), e.g. sleep in astronauts (Barger et al. 2014), core temperature in flight (Stahn et al. 2017)
+- Tools and code: Vite (MIT), Python with pandas and NumPy, Anthropic SDK and Google Gemini API (optional Emergency AI helper only)
+- Source code: https://github.com/gggg288g/NASA-hackathon
+
+## Use of Super Intelligence (SI)
+
+Yes. The project idea, challenge approach and choice of features are our team's. We used SI tools as follows:
+
+- **Code:** AI coding assistants (Claude) helped write, review and test parts of the code (for example the early-warning rules, reaction-time check and report layout) under our direction. Commits written with AI help carry a "Co-Authored-By: Claude" line in the git history, and the README notes this.
+- **Text:** AI helped draft and edit parts of this description and the README.
+- **In the app:** the optional Emergency talk-through uses an LLM (Gemini, with Claude as a fallback) only to phrase guidance from our own rule-based results and protocols. It is told never to diagnose or suggest drugs or doses. All triage, early warnings and protocols run as fixed rules and work offline without AI.
+- **Images and video:** none generated with SI.
+
+No NASA branding or logos are used in generated content.
 
 ## Disclaimer
 
@@ -95,7 +119,9 @@ Hackathon prototype for decision support. Not a medical device, not flight-certi
 
 ---
 
-## 2-minute demo script
+## Live walkthrough script (for presenting at the local event)
+
+The official Project Demo must be **7 slides or fewer (including title and intro)** or a **video of 30 seconds or less**, in English, hosted at a public link. The slides must show the team name, team members' names and the challenge. Use this script for a live walkthrough, not as the demo itself.
 
 1. **(15 s) Hook.** "On Mars, your doctor is 22 minutes away, each way. So the crew needs to know what's wrong before it's obvious, and what to do next."
 2. **(20 s) Real NASA data.** Open Medical officer. Tap **Tested on real NASA data**: on the Inspiration4 crew, comparing each person with their own pre-flight normal flagged 4 changes that normal ranges missed (platelets 356 → 185, still "normal").
