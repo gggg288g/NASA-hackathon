@@ -19,7 +19,8 @@ function renderCrew() {
     const o = overall(c, Math.min(st.day, Math.max(...ROWS[c].map(r => r.day))));
     const f = o.flags.filter(x => x.tier === "red").map(x => SYS[x.sys].name);
     const a = o.flags.filter(x => x.tier === "amber").map(x => SYS[x.sys].name);
-    const txt = f.length ? "Act: " + f.join(", ") : a.length ? "Watch: " + a.join(", ") : "All systems normal";
+    const nEw = patterns(c, Math.min(st.day, Math.max(...ROWS[c].map(r => r.day)))).length;
+    const txt = (f.length ? "Act: " + f.join(", ") : a.length ? "Watch: " + a.join(", ") : "All systems normal") + (nEw ? ` · ${nEw} early warning${nEw > 1 ? "s" : ""}` : "");
     return `<button type="button" class="crewcard tier-${o.tier}" data-crew="${c}" aria-pressed="${c === st.crew}">
       <div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="nm">${esc(CREW_NAME[c])}</span><span class="pill tier-${o.tier}">${TIER_LABEL[o.tier]}</span></div>
       <div class="flags">${esc(txt)}</div></button>`;
@@ -112,9 +113,11 @@ function renderTriage() {
   const sym = symptoms(st.crew, st.day);
   items.sort((a, b) => RANK[b.tier] - RANK[a.tier]);
   const anyRed = items.some(i => i.tier === "red");
+  const ews = patterns(st.crew, st.day), rc = rechecks(st.crew, st.day);
   $("#triage").innerHTML = `<h2>What to do</h2>
     ${anyRed ? `<div class="escalate"><strong>Escalate: ${esc(escShort(e))}</strong>${whyHTML("tri-esc", esc(e.red_tier_guidance))}
       <button class="btn danger" type="button" id="btn-report">Prepare report for flight surgeon</button></div>` : ""}
+    ${ews.length || rc.length ? `<h3 class="ew-h">Early warnings <span class="note">patterns & trends across indicators</span></h3>${ews.map(p => patternHTML(p, "mo")).join("")}${recheckHTML(rc)}<h3 class="ew-h">Single readings</h3>` : ""}
     ${items.length ? items.map(it => `<div class="alert tier-${it.tier}">
       <div class="t"><span>${esc(IND[it.id].name)} <span class="num">${fmt(it.value, it.id)} ${esc(IND[it.id].unit)}</span></span><span class="pill tier-${it.tier}">${TIER_LABEL[it.tier]}</span></div>
       ${actsHTML(IND[it.id].actions[it.tier], "tri-" + it.id)}</div>`).join("")

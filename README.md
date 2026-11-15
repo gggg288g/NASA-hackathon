@@ -22,6 +22,28 @@ Each reading gets two tiers and the app takes the worse one:
 
 Sleep, mood, stress and exercise use rolling averages instead of single days.
 
+**Alarm-fatigue guard:** a flag that comes only from the personal baseline (the Earth range is still normal) has to repeat on 2 of the last 3 readings before it counts. Until then it shows as "Re-check needed". Earth clinical Watch/Act tiers are never held back.
+
+### Early warnings (`src/core/patterns.js`)
+
+Single readings miss stories that span several indicators, so a second layer looks across them and explains each finding in plain words:
+
+| Warning | Fires when | Demo |
+| --- | --- | --- |
+| Immune watch | 3+ of 5 nights under 6 h sleep, and stress ≥ 3.5 or mood ≤ 2.5 | FE1 from day 31, five days before the rash and fever (day 36) |
+| Fatigue building up | 8+ h of sleep debt in a week (against 7 h a night) | FE1 day 30 |
+| Possible infection | temperature ≥ 0.5 °C over personal normal, plus heart rate +8% or immune symptoms | FE1 day 36, links to the fever protocol |
+| Bone & muscle loss speeding up | 4+ of 7 days under 60 min exercise | FE2 from day 68 |
+| Kidney stone risk | 3-day fluid average under 1,900 ml, plus low exercise or estimated bone loss ≥ 6% | FE2 from day 67 (low hydration, days 66–73) |
+| Shared cause? | 2+ crew with raised temperature or immune symptoms within 3 days | (cabin air, food, water or something going round the crew) |
+| Trend forecast | blood pressure or heart rate still Normal but on a steady 7-day line (R² ≥ 0.6) that reaches Watch within 7 days | strict on purpose, to avoid false alarms |
+
+These appear on the astronaut's Today screen ("Your health story"), in the medical officer's What to do column, on the crew cards and in the report to ground. Thresholds are demo values, not NASA medical standards.
+
+### Offline-first
+
+Check-ins are saved on the device (`localStorage`) and survive reloads. Privacy → "Clear saved check-ins" removes them. The built site registers a service worker (`public/sw.js`) so it keeps working without a connection after the first visit.
+
 ## NASA data used
 
 - **OSD-569**, SpaceX Inspiration4, Complete Blood Count (LSDS-7): https://osdr.nasa.gov/bio/repo/data/studies/OSD-569

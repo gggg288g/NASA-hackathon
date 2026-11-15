@@ -1,6 +1,8 @@
 // Astronaut view: Today screen, habits, body status.
 // ---------- ASTRONAUT MODE ----------
-const am = { me: "CDR", shareMood: false, done: {}, fluid: {} };   // fluid["CREW:day"] = [ml, ml, ...] drinks logged so far (in memory)
+const FLUID_KEY = "crew-health.fluid.v1";   // drinks logged today survive a reload (offline, on this device only)
+const am = { me: "CDR", shareMood: false, done: {}, fluid: (() => { try { return JSON.parse(localStorage.getItem(FLUID_KEY)) || {}; } catch { return {}; } })() };   // fluid["CREW:day"] = [ml, ml, ...] drinks logged so far
+const saveFluid = () => { try { localStorage.setItem(FLUID_KEY, JSON.stringify(am.fluid)); } catch { } };
 // Plain step-by-step instructions (demo wording; real crews follow their onboard medical checklists)
 const HOWTO = {
   sleep_hours: ["Check your wrist sensor's sleep summary, or estimate from lights-out to wake-up.", "Count only time actually asleep."],
@@ -75,9 +77,10 @@ function fluidGoal(crew) {
 function logFluid(crew, day, ml) {
   if (!(ml > 0 && ml <= 3000)) return;
   (am.fluid[fluidKey(crew, day)] ||= []).push(Math.round(ml));
+  saveFluid();
   renderAstro();
 }
-function undoFluid(crew, day) { const a = am.fluid[fluidKey(crew, day)]; if (a && a.length) { a.pop(); renderAstro(); } }
+function undoFluid(crew, day) { const a = am.fluid[fluidKey(crew, day)]; if (a && a.length) { a.pop(); saveFluid(); renderAstro(); } }
 function hydrationHTML(crew, d, isDone) {
   const ml = fluidToday(crew, d), goal = fluidGoal(crew), n = fluidLog(crew, d).length;
   const pct = Math.min(100, Math.round(ml / goal * 100));
@@ -118,7 +121,8 @@ function renderAstro() {
   const o = overall(crew, flags.day);
   const reds = flags.items.filter(i => i.tier === "red"), ambers = flags.items.filter(i => i.tier === "amber");
   const t = reds.length ? "red" : ambers.length ? "amber" : "green";
-  const status = t === "green" ? "You're OK today" : "Check in with medical";
+  const ews = patterns(crew, flags.day), rc = rechecks(crew, flags.day);
+  const status = t !== "green" || ews.some(p => p.tier === "red") ? "Check in with medical" : ews.length ? `You're OK today, with ${ews.length} thing${ews.length > 1 ? "s" : ""} to watch` : "You're OK today";
   const steps = wizSteps(d);
   const groups = [...new Set(steps.map(s => s.group))];
   const exStreak = streak(crew, r => r.exercise_min >= 90);
@@ -137,6 +141,7 @@ function renderAstro() {
       ${isDone ? `<button class="btn bigbtn" type="button" id="astro-next">Start next day</button>` : `<button class="btn primary bigbtn" type="button" id="astro-start">Daily check-in</button>`}
       <button class="btn bigbtn" type="button" data-mode="sc">Self-check</button>
     </section>
+    ${ews.length || rc.length ? `<section class="card ew-card"><h3 class="ew-h">Your health story <span class="note">patterns across your data, before they become alerts</span></h3>${ews.map(p => patternHTML(p, "as")).join("")}${recheckHTML(rc)}</section>` : ""}
     ${flags.items.length ? disc("as-act", `What to do<span class="count">${flags.items.length}</span>`, `
       ${flags.items.slice(0, 4).map(i => `<div class="act tier-${i.tier}"><div class="t"><span>${esc(IND[i.id].name)} <span class="num">${fmt(i.value, i.id)} ${esc(IND[i.id].unit)}</span></span><span class="pill tier-${i.tier}">${TIER_LABEL[i.tier]}</span></div>${actsHTML(IND[i.id].actions[i.tier], "as-" + i.id)}</div>`).join("")}
       ${protoBtns.map(p => `<button class="btn danger bigbtn" type="button" data-proto="${p}">Step by step: ${PROTOCOLS[p].title}</button>`).join("")}
@@ -153,7 +158,10 @@ function renderAstro() {
       </div>
       ${whyHTML("as-bone", `Estimated bone loss so far: <span class="num">${fmt(ROWS[crew][ROWS[crew].length - 1].est_bone_loss_pct)}%</span>. Bones lose about 1 to 1.5% a month in microgravity. Each full exercise day slows it.`, "Why exercise?")}`, "card")}
     ${disc("as-checks", `Today's checks<span class="count">${steps.length}</span>`, `<div class="todo">${groups.map(g => `<div class="note">${g}</div><ul>${steps.filter(s => s.group === g).map(s => `<li><span class="tick ${isDone ? "done" : ""}"></span><span>${esc(s.title)}</span><span class="note">${isDone ? "Done" : ""}</span></li>`).join("")}</ul>`).join("")}</div>`, "card")}
-    ${disc("as-priv", "Privacy", `<label class="privacy"><input type="checkbox" id="share-mood" ${am.shareMood ? "checked" : ""}><span>Share my mood and stress scores with ground.</span></label>${whyHTML("as-priv-why", "Off by default, so only you and the crew medical officer see them.")}`, "card")}`;
+    ${disc("as-priv", "Privacy", `<label class="privacy"><input type="checkbox" id="share-mood" ${am.shareMood ? "checked" : ""}><span>Share my mood and stress scores with ground.</span></label>${whyHTML("as-priv-why", "Off by default, so only you and the crew medical officer see them.")}
+      <p class="note" style="margin:10px 0 6px">Works offline. Your check-ins are stored on this device only (${window.savedCount ? savedCount() : 0} saved).</p>
+      <button class="btn" type="button" id="clear-saved">Clear saved check-ins</button>`, "card")}`;
+  const cs = $("#clear-saved"); if (cs) cs.onclick = () => { if (confirm("Delete the check-ins saved on this device?")) clearSaved(); };
   const s1 = $("#astro-start"); if (s1) s1.onclick = () => openWizard(crew);
   const s2 = $("#astro-next"); if (s2) s2.onclick = () => { delete am.done[crew]; renderAstro(); };
   const s3 = $("#astro-report"); if (s3) s3.onclick = () => { st.crew = crew; st.day = flags.day; openReport(); };
