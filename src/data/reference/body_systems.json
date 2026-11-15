@@ -194,7 +194,8 @@
    "function": "Turns food into energy and building blocks.",
    "indicators": [
     "glucose",
-    "body_mass"
+    "body_mass",
+    "fluid_intake_ml"   
    ],
    "hazards": [
     "altered gravity",

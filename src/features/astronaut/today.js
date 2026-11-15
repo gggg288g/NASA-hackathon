@@ -1,6 +1,6 @@
 // Astronaut view: Today screen, habits, body status.
 // ---------- ASTRONAUT MODE ----------
-const am = { me: "CDR", shareMood: false, done: {} };   // done[crew] = day completed via wizard
+const am = { me: "CDR", shareMood: false, done: {}, fluid: {} };   // fluid["CREW:day"] = [ml, ml, ...] drinks logged so far (in memory)
 // Plain step-by-step instructions (demo wording; real crews follow their onboard medical checklists)
 const HOWTO = {
   sleep_hours: ["Check your wrist sensor's sleep summary, or estimate from lights-out to wake-up.", "Count only time actually asleep."],
@@ -10,6 +10,7 @@ const HOWTO = {
   spo2: ["Clip the oximeter on a warm fingertip.", "Keep the hand still for 30 seconds until the number is steady."],
   glucose: ["Fasting: before breakfast.", "Clean the fingertip, prick the side, wipe the first drop.", "Touch the second drop to the test strip."],
   exercise_min: ["Total minutes on treadmill, cycle and resistance device today.", "The device log fills this in automatically when connected."],
+  fluid_intake_ml: ["Add up every drink today: water, juice, coffee and rehydrated drinks. A standard drink pouch is about 250 ml.", "If you logged drinks on the Today screen, the total is already filled in. Change it if it is off.", "Soup and food water are not counted here."],
   mood: ["How do you feel overall today?"],
   stress: ["How stressed do you feel right now?"],
   body_mass: ["Use the mass measurement device after waking, before eating.", "Follow the device prompts; hold still during the measurement."],
@@ -23,6 +24,7 @@ const WHY = {
   spo2: "Checks that your blood carries enough oxygen in the closed cabin air.",
   glucose: "Spaceflight can make the body handle sugar differently. Low values need quick action.",
   exercise_min: "Exercise is your main defence against bone and muscle loss.",
+  fluid_intake_ml: "Thirst is weaker in space and fluids shift toward the head, so crews drink less than they need. Low intake raises kidney-stone risk and makes dizziness worse on return to gravity.",
   mood: "Isolation is one of the five big hazards of spaceflight. Patterns over days matter, not one bad day.",
   stress: "Stress weakens the immune system and can wake up dormant viruses.",
   symptoms: "Early reporting of rashes, fever or headaches lets the crew act before things get worse.",
@@ -47,6 +49,7 @@ function wizSteps(day) {
   if (day % 7 === 0) st.push({ id: "body_mass", title: "Weekly: body mass", group: "Weekly" }, { id: "vision_check", title: "Weekly: eye check", group: "Weekly", amsler: true, choice: [[0, "All lines straight"], [1, "Some lines wavy or blurred"], [2, "A patch is missing or dark"]] });
   if (day % 14 === 7) st.push({ id: "phq9", title: "Mood check", group: "Every 2 weeks", phq: true });
   st.push(
+        { id: "fluid_intake_ml", title: "Fluids today", group: "Evening" },
     { id: "exercise_min", title: "Exercise today", group: "Evening" },
     { id: "mood", title: "Mood", group: "Evening", choice: [[1, "1 · Very low"], [2, "2 · Low"], [3, "3 · OK"], [4, "4 · Good"], [5, "5 · Great"]] },
     { id: "stress", title: "Stress", group: "Evening", choice: [[1, "1 · Calm"], [2, "2"], [3, "3 · Some"], [4, "4 · High"], [5, "5 · Overwhelmed"]] },
@@ -58,6 +61,34 @@ function provisionalTier(crew, id, v) {
   if (!IND[id] || !isNum(v)) return null;
   const vals = ROWS[crew].map(r => r[id]).concat([v]);
   return triageSeries(IND[id], vals).pop();
+}
+// ---------- hydration log ----------
+const HYD_STEPS = [250, 500, 750];   // quick-add sizes in ml (250 ml is about one drink pouch)
+const fluidKey = (crew, day) => crew + ":" + day;
+const fluidLog = (crew, day) => am.fluid[fluidKey(crew, day)] || [];
+const fluidToday = (crew, day) => fluidLog(crew, day).reduce((a, b) => a + b, 0);
+// Daily target: 32 ml per kg body mass, never below 2100 ml (rounded to 50).
+function fluidGoal(crew) {
+  const mass = [...ROWS[crew]].reverse().map(r => r.body_mass).find(isNum);
+  return Math.max(2100, Math.round((isNum(mass) ? mass * 32 : 0) / 50) * 50);
+}
+function logFluid(crew, day, ml) {
+  if (!(ml > 0 && ml <= 3000)) return;
+  (am.fluid[fluidKey(crew, day)] ||= []).push(Math.round(ml));
+  renderAstro();
+}
+function undoFluid(crew, day) { const a = am.fluid[fluidKey(crew, day)]; if (a && a.length) { a.pop(); renderAstro(); } }
+function hydrationHTML(crew, d, isDone) {
+  const ml = fluidToday(crew, d), goal = fluidGoal(crew), n = fluidLog(crew, d).length;
+  const pct = Math.min(100, Math.round(ml / goal * 100));
+  const tier = ml >= 2000 ? "green" : ml >= 1500 ? "amber" : "red";
+  const left = Math.max(0, goal - ml);
+  return `<div class="hyd-top"><span class="big num">${ml.toLocaleString()} <small>of ${goal.toLocaleString()} ml</small></span>${isDone ? `<span class="pill tier-${tier}">${TIER_LABEL[tier]}</span>` : ""}</div>
+    <div class="hydbar" role="progressbar" aria-valuemin="0" aria-valuemax="${goal}" aria-valuenow="${ml}" aria-label="Fluids today"><i style="width:${pct}%"></i></div>
+    <div class="note">${isDone ? "Saved with today's check-in." : left ? `${left.toLocaleString()} ml to go. ${n} drink${n === 1 ? "" : "s"} logged.` : `Target reached. ${n} drink${n === 1 ? "" : "s"} logged.`}</div>
+    ${isDone ? "" : `<div class="hyd-btns">${HYD_STEPS.map(v => `<button class="btn" type="button" data-hyd="${v}">+${v} ml</button>`).join("")}</div>
+      <div class="hyd-custom"><input type="number" inputmode="numeric" id="hyd-custom" min="1" max="3000" step="10" placeholder="Other amount (ml)" aria-label="Other amount in ml"><button class="btn" type="button" id="hyd-add">Add</button><button class="btn" type="button" id="hyd-undo" ${n ? "" : "disabled"}>Undo last</button></div>`}
+    ${whyHTML("as-hyd-why", `Target is 32 ml per kg of body mass, at least 2100 ml (NASA exploration nutrition requirement for food plus drinks). Only drinks are counted here, so a day just under the target is normal. Below 2000 ml shows as Watch and below 1500 ml as Act.`, "Where does the target come from?")}`;
 }
 const lastDay = crew => Math.max(...ROWS[crew].map(r => r.day));
 const today = crew => { const m = lastDay(crew); return am.done[crew] === m ? m : m + 1; };
@@ -98,6 +129,7 @@ function renderAstro() {
   const sysFlag = sysAll.filter(x => x.tier === "amber" || x.tier === "red");
   const sysRow = x => `<div><span>${esc(SYS[x.sid].name)}</span><span class="pill tier-${x.tier}">${TIER_LABEL[x.tier]}</span></div>`;
   const ex14 = last14(crew, r => r.exercise_min >= 90);
+  const hydMl = fluidToday(crew, d);
   $("#astro-view").innerHTML = `
     <section class="hero tier-${t}">
       <div class="eyebrow">${esc(CREW_NAME[crew])} · ${esc(e.name)} · Day <span class="num">${d}</span>${isDone ? " · check-in done" : ""}</div>
@@ -112,7 +144,8 @@ function renderAstro() {
     ${disc("as-body", "Your body", `
       ${sysFlag.length ? `<div class="sysl">${sysFlag.map(sysRow).join("")}</div>` : `<div class="allclear"><strong>All ${sysAll.length} systems normal.</strong></div>`}
       ${disc("as-sys", "All systems", `<div class="sysl">${sysAll.map(sysRow).join("")}</div>`)}`, "card")}
-    ${disc("as-habits", "Habits", `
+      ${disc("as-hyd", `Hydration<span class="count">${hydMl.toLocaleString()} / ${fluidGoal(crew).toLocaleString()} ml</span>`, hydrationHTML(crew, d, isDone), "card")}
+      ${disc("as-habits", "Habits", `
       <div class="habits">
         <div class="habit"><span class="note">Exercise</span><span class="big num">${exStreak} <small>day streak</small></span><div class="dots">${ex14.map(x => `<i class="${x ? "on" : ""}"></i>`).join("")}</div></div>
         <div class="habit"><span class="note">Sleep 6.5 h+</span><span class="big num">${sleepOK.filter(Boolean).length} <small>of 14 nights</small></span><div class="dots">${sleepOK.map(x => `<i class="${x ? "on" : ""}"></i>`).join("")}</div></div>
@@ -124,8 +157,12 @@ function renderAstro() {
   const s1 = $("#astro-start"); if (s1) s1.onclick = () => openWizard(crew);
   const s2 = $("#astro-next"); if (s2) s2.onclick = () => { delete am.done[crew]; renderAstro(); };
   const s3 = $("#astro-report"); if (s3) s3.onclick = () => { st.crew = crew; st.day = flags.day; openReport(); };
+    document.querySelectorAll("[data-hyd]").forEach(b => b.onclick = () => logFluid(crew, d, +b.dataset.hyd));
+  const hc = $("#hyd-custom"), ha = $("#hyd-add");
+  if (ha) { const add = () => { const v = parseFloat(hc.value); if (v > 0 && v <= 3000) logFluid(crew, d, v); else hc.value = ""; }; ha.onclick = add; hc.onkeydown = ev => { if (ev.key === "Enter") add(); }; }
+  const hu = $("#hyd-undo"); if (hu) hu.onclick = () => undoFluid(crew, d);
   $("#share-mood").onchange = ev => { am.shareMood = ev.target.checked; };
 }
 
 // Shared with other modules (see README: "How modules share code").
-Object.assign(window, { am, HOWTO, WHY, PHQ_ITEMS, PHQ_LAB, PHQ_BAND, PHQ_URGENT, amslerSVG, wizSteps, provisionalTier, lastDay, today, lastFlags, streak, last14, PROTOCOL_FOR, renderAstro });
+Object.assign(window, { am, HOWTO, WHY, PHQ_ITEMS, PHQ_LAB, PHQ_BAND, PHQ_URGENT, amslerSVG, wizSteps, provisionalTier, lastDay, today, lastFlags, streak, last14, PROTOCOL_FOR, renderAstro, fluidToday, fluidGoal, fluidLog, logFluid, undoFluid });

@@ -28,13 +28,13 @@ PREFLIGHT_DAYS = 14
 CREW = [
     dict(crew_id="CDR", name="Crew A (Commander)", age=46, sex="M",
          hr=62, sys=122, dia=76, glu=88, temp=36.9, spo2=98, sleep=6.9,
-         mood=4.0, stress=2.2, mass=82.0, exercise=120),
+         mood=4.0, stress=2.2, mass=82.0, exercise=120, fluid=2700),
     dict(crew_id="FE1", name="Crew B (Flight Engineer 1)", age=39, sex="F",
          hr=66, sys=112, dia=72, glu=84, temp=36.8, spo2=98, sleep=7.2,
-         mood=4.2, stress=2.0, mass=63.0, exercise=118),
+         mood=4.2, stress=2.0, mass=63.0, exercise=118, fluid=2450),
     dict(crew_id="FE2", name="Crew C (Flight Engineer 2)", age=42, sex="M",
          hr=58, sys=118, dia=76, glu=90, temp=36.9, spo2=97, sleep=6.8,
-         mood=3.9, stress=2.1, mass=76.0, exercise=125),
+         mood=3.9, stress=2.1, mass=76.0, exercise=125, fluid=2600),
 ]
 
 # Planted events: (crew_id, start_day, end_day, type, description)
@@ -51,6 +51,8 @@ EVENTS = [
      "Skipped meals + long exercise session -> fasting glucose ~52 mg/dL (ADA level 2)."),
     ("FE2", 65, 80, "exercise_noncompliance",
      "Workload spike: exercise drops to ~35-50 min/day; modelled bone/muscle loss accelerates."),
+         ("FE2", 66, 73, "low_hydration",
+     "Same workload spike: skips drink breaks, fluid intake ~1.3-1.4 L/day for a week."),
 ]
 
 
@@ -66,7 +68,7 @@ def in_event(crew_id, day, etype):
     return False, 0, 0
 
 
-def gen_crew(c, flight_days, rng, env):
+def gen_crew(c, flight_days, rng, env, frng):
     rows = []
     bone_loss = 0.0
     muscle_loss = 0.0
@@ -102,6 +104,7 @@ def gen_crew(c, flight_days, rng, env):
         mood = c["mood"] + mood_shift + rng.normal(0, 0.45)
         stress = c["stress"] + (0.3 if flight else 0) + rng.normal(0, 0.45)
         exercise = c["exercise"] + rng.normal(0, 10) if flight else c["exercise"] * 0.9 + rng.normal(0, 10)
+                fluid = c["fluid"] * (0.95 if flight else 1.0) + frng.normal(0, 180)
         symptoms = []
         vision = 0
 
@@ -142,6 +145,9 @@ def gen_crew(c, flight_days, rng, env):
         if on:
             exercise = 42 + rng.normal(0, 6)
             stress += 0.6
+        on, k, n = in_event(c["crew_id"], day, "low_hydration")
+        if on:
+            fluid = 1350 + frng.normal(0, 90)
 
         # ---- modelled bone / muscle loss (only in microgravity) ----
         if flight and env["gravity_g"] < 0.1:
@@ -166,6 +172,7 @@ def gen_crew(c, flight_days, rng, env):
             mood=int(np.clip(round(mood), 1, 5)),
             stress=int(np.clip(round(stress), 1, 5)),
             exercise_min=int(max(0, round(exercise))),
+            fluid_intake_ml=int(max(0, round(fluid / 50) * 50)),
             body_mass=round(mass, 1) if mass is not None else None,
             vision_check=vision if weekly or vision else None,
             # PHQ-9 total every 2 weeks (days 7, 21, 35...), derived from that day's mood and stress
@@ -203,10 +210,10 @@ def main():
     env = envs[args.env]
 
     rng = np.random.default_rng(args.seed)
+    frng = np.random.default_rng(args.seed + 1000)   # separate stream for fluid intake
     rows = []
     for c in CREW:
-        rows += gen_crew(c, args.days, rng, env)
-    df = add_missing(pd.DataFrame(rows), rng)
+        rows += gen_crew(c, args.days, rng, env, frng)
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)

@@ -4,6 +4,8 @@ const wz = { crew: null, day: 0, steps: [], i: 0, vals: {} };
 function openWizard(crew) {
   const last = ROWS[crew][ROWS[crew].length - 1];
   Object.assign(wz, { crew, day: last.day + 1, steps: wizSteps(last.day + 1), i: 0, vals: { symptoms: [] } });
+    const logged = fluidToday(crew, wz.day);   // drinks logged on the Today screen pre-fill the fluids step
+  if (logged > 0) wz.vals.fluid_intake_ml = logged;
   renderWizStep(); $("#dlg-wiz").showModal();
 }
 function stepFeedback(step) {
@@ -49,7 +51,7 @@ function renderWizStep() {
     input = `<div class="phq">${PHQ_ITEMS.map((q, k) => `<div class="phq-q"><div class="phq-t"><span class="num muted">${k + 1}</span> ${esc(q)}</div><div class="seg phq-seg" role="group" aria-label="${esc(q)}">${PHQ_LAB.map((l, v) => `<button type="button" data-phq="${k}" data-v="${v}" aria-pressed="${a[k] === v}">${esc(l)}</button>`).join("")}</div></div>`).join("")}</div><p class="note" style="margin:0">PHQ-9 (Kroenke et al.), a validated screen used in primary care.</p>`; }
   else if (step.choice) input = (step.amsler ? `<div class="amsler-wrap">${amslerSVG()}</div>` : "") + `<div class="choice">${step.choice.map(([v, l]) => `<button type="button" class="btn" data-wc="${v}" aria-pressed="${wz.vals[step.id] === v}">${esc(l)}</button>`).join("")}</div>`;
   else if (step.multi) input = `<div class="choice">${step.multi.map(x => `<button type="button" class="btn" data-wm="${x}" aria-pressed="${wz.vals.symptoms.includes(x)}">${esc(x)}</button>`).join("")}</div>`;
-  else input = `<div class="wiz-in">${(step.fields || [step.id]).map(id => { const ind = IND[id], stepv = id === "core_temp" ? "0.1" : id === "sleep_hours" || id === "body_mass" ? "0.1" : "1"; return `<div class="field"><label for="w-${id}">${esc(step.fields ? (id === "bp_systolic" ? "Top number" : "Bottom number") : ind.name)}</label><input type="number" inputmode="decimal" id="w-${id}" step="${stepv}" value="${isNum(wz.vals[id]) ? wz.vals[id] : ""}"></div>`; }).join("")}<span class="unit">${esc(IND[(step.fields || [step.id])[0]].unit)}</span></div>`;
+  else input = `<div class="wiz-in">${(step.fields || [step.id]).map(id => { const ind = IND[id], stepv = id === "core_temp" ? "0.1" : id === "sleep_hours" || id === "body_mass" ? "0.1" : id === "fluid_intake_ml" ? "50" : "1"; return `<div class="field"><label for="w-${id}">${esc(step.fields ? (id === "bp_systolic" ? "Top number" : "Bottom number") : ind.name)}</label><input type="number" inputmode="decimal" id="w-${id}" step="${stepv}" value="${isNum(wz.vals[id]) ? wz.vals[id] : ""}"></div>`; }).join("")}<span class="unit">${esc(IND[(step.fields || [step.id])[0]].unit)}</span></div>`;
   const showHow = how.length && !step.choice;
   const whyBody = `${WHY[step.id] ? `<div>${esc(WHY[step.id])}</div>` : ""}${showHow ? `<ol>${how.map(h => `<li>${esc(h)}</li>`).join("")}</ol>` : ""}`;
   $("#wiz-body").innerHTML = `<div class="wiz-step"><h3 id="wiz-title">${esc(step.title)}</h3>

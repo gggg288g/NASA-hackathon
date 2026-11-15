@@ -50,7 +50,7 @@ async function geminiSample(msgs, { onText, mode = "chat" } = {}) {
   if (AI.tts) AI.tts.onState(({ state }) => setSpeaking(state === "speaking"));
 } catch { } })();
 // Everything the AI knows about this case: the person's readings vs THEIR baseline, last 7 days, symptoms, description.
-const CASE_IDS = ["bp_systolic", "bp_diastolic", "resting_hr", "core_temp", "glucose", "spo2", "sleep_hours", "stress", "exercise_min", "vision_check"];
+const CASE_IDS = ["bp_systolic", "bp_diastolic", "resting_hr", "core_temp", "glucose", "spo2", "sleep_hours", "stress", "exercise_min", "fluid_intake_ml", "vision_check"];
 function aiContext() {
   const c = em.crew, d = em.day, env = ENV[st.env], rows = ROWS[c].filter(r => r.day <= d && r.day > d - 7);
   const now = CASE_IDS.map(id => { const e = ev(c, d, id); return e ? `- ${line(e, id)} [status ${TIER_LABEL[e.tier || "none"]}]` : null; }).filter(Boolean).join("\n");
